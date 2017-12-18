@@ -17,4 +17,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
 # for temporary upload files
-FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, 'tmp')
+# FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, 'tmp')
