@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/logo.css' %}">
+{% endblock %}
+
+{% block body %}
+
+{% block menu %}
+<div class="ui container">
+  {{ hey }}
+  {% for line in menu %}
+    <div class="line">
+      {% for pixel in line %}
+        <div class="pixel {% if pixel == '1' %}black{% endif %}">
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% endblock %}
