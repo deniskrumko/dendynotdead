@@ -6,10 +6,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'storages',
 ]
 
 LOCAL_APPS = [
-
+    'apps.core',
+    'apps.dendynotdead',
+    'apps.news',
+    'apps.users',
 ]
 
 INSTALLED_APPS += LOCAL_APPS

@@ -14,3 +14,5 @@ DATABASES = {
 }
 
 AUTH_PASSWORD_VALIDATORS = []
+
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'

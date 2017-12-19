@@ -1,4 +1,5 @@
 from .auth import *  # noqa
+from .aws_s3 import *  # noqa
 from .installed_apps import *  # noqa
 from .locales import *  # noqa
 from .middleware import *  # noqa

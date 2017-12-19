@@ -1,19 +1,37 @@
 .ui.secondary.menu {
   margin-top: 2em;
+  margin-bottom: 3em;
 }
 
 .ui.search .prompt {
     border-radius: .28571429rem;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 500px){
     .mobile-hidden-menu { display: none !important; }
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 500px){
     .mobile-show-menu { display: none !important; }
+}
+
+@media screen and (max-width: 580px){
+    .shrink-search { width: 120px; }
 }
 
 .toggle-menu-icon {
   font-size: 22px !important;
+}
+
+.ui.secondary.menu .item {
+  transition: all 0.3s ease-out;
+  border: 1px solid transparent;
+}
+
+.ui.secondary.menu .active.item:hover {
+    background: rgba(0,0,0,.13);
+}
+
+.ui.secondary.menu .dropdown.item:hover, .ui.secondary.menu .link.item:hover, .ui.secondary.menu a.item:hover {
+    background: rgba(0,0,0,.03);
 }

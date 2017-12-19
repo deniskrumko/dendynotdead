@@ -1,0 +1,24 @@
+{% extends "base_template.html" %}
+{% load static %}
+
+{% block content %}
+<div class="ui four stackable cards">
+
+  {% for news_item in news %}
+  <div class="card">
+    <div class="content">
+      <div class="header">{{ news_item.title }}</div>
+      <div class="meta">2 days ago</div>
+      <div class="description">
+        {{ news_item.content }}
+      </div>
+    </div>
+    <div class="extra content">
+      <i class="check icon"></i>
+      121 Votes
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+{% endblock %}
