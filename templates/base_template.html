@@ -2,27 +2,71 @@
 {% load static %}
 
 {% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/logo.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+{% endblock %}
+
+{% block extrajs %}
+<script src="{% static 'js/menu.js' %}"></script>
 {% endblock %}
 
 {% block body %}
 
+<div class="ui right vertical inverted sidebar labeled icon menu">
+  <a class="active item">
+    <i class="newspaper icon"></i>
+    News
+  </a>
+  <a class="item">
+    <i class="play icon"></i>
+    Music
+  </a>
+  <a class="item">
+    <i class="id card outline icon"></i>
+    About
+  </a>
+  <a class="item">
+    <i class="search icon"></i>
+    Search
+  </a>
+</div>
+
 {% block menu %}
-<div class="ui container">
-  {{ hey }}
-  {% for line in menu %}
-    <div class="line">
+<div class="ui secondary menu container">
+  <div class="dnd-logo">
+    {% for line in menu %}
+    <div class="logo-line">
       {% for pixel in line %}
-        <div class="pixel {% if pixel == '1' %}black{% endif %}">
-        </div>
+      <div class="logo-pixel {% if pixel == '1' %}black{% elif pixel == '2' %}red{% endif %}"></div>
       {% endfor %}
     </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
+  <div class="right menu mobile-hidden-menu">
+    <div class="ui category search item">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Search">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+    <a class="active item">News</a>
+    <a class="item">Music</a>
+    <a class="item">About</a>
+  </div>
+  <div class="right menu mobile-show-menu">
+    <div class="item" id="toggle-menu">
+      <i class="content icon toggle-menu-icon"></i>
+    </div>
+  </div>
 </div>
 {% endblock %}
 
+<div class="ui container">
 {% block content %}
 
 {% endblock %}
+</div>
+
 
 {% endblock %}

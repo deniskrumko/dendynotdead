@@ -1,0 +1,19 @@
+.ui.secondary.menu {
+  margin-top: 1em;
+}
+
+.ui.search .prompt {
+    border-radius: .28571429rem;
+}
+
+@media screen and (max-width: 600px){
+    .mobile-hidden-menu { display: none !important; }
+}
+
+@media screen and (min-width: 600px){
+    .mobile-show-menu { display: none !important; }
+}
+
+.toggle-menu-icon {
+  font-size: 22px !important;
+}
