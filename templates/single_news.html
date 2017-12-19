@@ -4,39 +4,37 @@
 {% block content %}
 <div class="ui four stackable cards">
 
-  {% for news_item in news %}
   <div class="card">
-    {% if news_item.image %}
+    {% if news.image %}
     <div class="content">
       <div class="right floated meta">2 days ago</div>
-      <a class="header" href="/news/{{ news_item.slug }}">{{ news_item.title }}</a>
+      <div class="header">{{ news.title }}</div>
     </div>
     <div class="image">
-      <img src="{{ news_item.image.url }}">
+      <img src="{{ news.image.url }}">
     </div>
     <div class="content">
       <div class="description">
-        {{ news_item.preview }}
+        {{ news.preview }}
       </div>
     </div>
     {% else %}
     <div class="content">
       <div class="right floated meta">2 days ago</div>
-      <a class="header" href="/news/{{ news_item.slug }}">{{ news_item.title }}</a>
+      <div class="header">{{ news.title }}</div>
       <div class="description">
-        {{ news_item.preview }}
+        {{ news.preview }}
       </div>
     </div>
     {% endif %}
 
     <div class="extra content">
       <i class="empty heart icon"></i>
-      {{ news_item.views }}
+      {{ news.views }}
       <i class="user outline icon"></i>
-      {{ news_item.likes_count }}
+      {{ news.likes_count }}
     </div>
   </div>
-  {% endfor %}
 
 </div>
 {% endblock %}

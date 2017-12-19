@@ -10,3 +10,17 @@ class NewsView(TemplateView):
         return {
             'news': News.objects.all()
         }
+
+
+class SingleNewsView(TemplateView):
+    template_name = 'single_news.html'
+
+    def get(self, request, **kwargs):
+        context = self.get_context_data(**kwargs)
+        page_slug = kwargs.get('page_slug')
+
+        news = News.objects.filter(slug=page_slug).first()
+
+        if news:
+            context['news'] = news
+            return self.render_to_response(context)

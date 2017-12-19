@@ -1,7 +1,8 @@
-from django.urls import path
+from django.conf.urls import url
 
-from .views import NewsView
+from .views import NewsView, SingleNewsView
 
 urlpatterns = [
-    path('', NewsView.as_view(), name='news'),
+    url('^$', NewsView.as_view(), name='news'),
+    url('^(?P<page_slug>[\w-]+)$', SingleNewsView.as_view(), name='single-news'),
 ]
