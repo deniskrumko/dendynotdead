@@ -1,6 +1,11 @@
 {% extends "base_template.html" %}
 {% load static %}
 
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="ui four stackable cards">
 
@@ -12,7 +17,9 @@
       <a class="header" href="/news/{{ news_item.slug }}">{{ news_item.title }}</a>
     </div>
     <div class="image">
-      <img src="{{ news_item.image.url }}">
+      <a href="/news/{{ news_item.slug }}" class="">
+        <img class="ui large centered image" src="{{ news_item.image.url }}">
+      </a>
     </div>
     <div class="content">
       <div class="description">

@@ -1,40 +1,52 @@
 {% extends "base_template.html" %}
 {% load static %}
 
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="ui four stackable cards">
-
-  <div class="card">
-    {% if news.image %}
-    <div class="content">
-      <div class="right floated meta">2 days ago</div>
-      <div class="header">{{ news.title }}</div>
-    </div>
-    <div class="image">
-      <img src="{{ news.image.url }}">
-    </div>
-    <div class="content">
-      <div class="description">
-        {{ news.preview }}
-      </div>
-    </div>
-    {% else %}
-    <div class="content">
-      <div class="right floated meta">2 days ago</div>
-      <div class="header">{{ news.title }}</div>
-      <div class="description">
-        {{ news.preview }}
-      </div>
-    </div>
-    {% endif %}
-
-    <div class="extra content">
-      <i class="empty heart icon"></i>
-      {{ news.views }}
-      <i class="user outline icon"></i>
-      {{ news.likes_count }}
+<div class="ui stackable grid">
+  <div class="ui row">
+    <div class="ui breadcrumb">
+      <a class="section" href="/news">News</a>
+      <i class="right angle icon divider"></i>
+      <div class="active section">{{ news.title }}</div>
     </div>
   </div>
+  <div class="five wide column">
+  {% if news.image %}
+  <img class="ui fluid image" src="{{ news.image.url }}">
+  {% else %}
+    <img class="ui medium centered image" src="{% static 'images/corgi-cool.jpg' %}">
+    <br>
+    <p class="text-center text-faded">Sorry, but there is no image. Woof.</p>
+  {% endif %}
+  </div>
+  <div class="eleven wide column">
+    <h1>{{ news.title }}</h1>
+    <p class="text-faded">{% if news.author %}by {{ news.author.full_name }} at {% endif %}{{ news.created }}</p>
+    {% autoescape off %}
+    <p>{{ news.full_text }}</p>
+    {% lorem 5 p %}
+    {% endautoescape %}
 
+    <div class="">
+      <span class="news-meta"><i class="heart icon"></i>0 Likes</span>
+      <span class="news-meta"><i class="user icon"></i>0 Views</span>
+      <span class="news-meta"><i class="alarm icon"></i>0 Shares</span>
+    </div>
+    <br>
+    <button class="ui circular vk icon button">
+      <i class="vk icon"></i>
+    </button>
+    <button class="ui circular twitter icon button">
+      <i class="twitter icon"></i>
+    </button>
+    <button class="ui circular google plus icon button">
+      <i class="google plus icon"></i>
+    </button>
+  </div>
 </div>
 {% endblock %}

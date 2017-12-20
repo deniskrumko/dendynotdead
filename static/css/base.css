@@ -1,3 +1,19 @@
 .ui.container {
     max-width: 1000px !important;
 }
+
+.text-faded {
+  color: #aaa;
+}
+
+@media screen and (max-width: 768px){
+    .tablet-hidden { display: none !important; }
+}
+
+@media screen and (min-width: 768px){
+    .tablet-show { display: none !important; }
+}
+
+.text-center {
+  text-align: center;
+}

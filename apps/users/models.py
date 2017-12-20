@@ -17,3 +17,7 @@ class User(AbstractUser):
         verbose_name = _('User')
         verbose_name_plural = _('Users')
         ordering = ('email',)
+
+    @property
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
