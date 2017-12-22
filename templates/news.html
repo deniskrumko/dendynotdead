@@ -46,4 +46,23 @@
   {% endfor %}
 
 </div>
+
+<br><br>
+
+<div class="ui centered grid">
+  <div class="ui circular labels">
+    <a class="" {% if prev_page %}href="/news/?page={{ prev_page }}"{% endif %}>
+      <i class="chevron left icon news-arrows {% if not prev_page %}disabled-icon{% endif %}"></i>
+    </a>
+    {% for page in pages %}
+    <a class="ui {% if page == cur_page %}active{% endif %} label" href="/news/?page={{ page }}">
+      {{ page }}
+    </a>
+    {% endfor %}
+    <a class="" {% if next_page %}href="/news/?page={{ next_page }}"{% endif %}>
+      <i class="chevron right icon news-arrows {% if not next_page %}disabled-icon{% endif %}"></i>
+    </a>
+  </div>
+</div>
+
 {% endblock %}

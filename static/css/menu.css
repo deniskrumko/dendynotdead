@@ -1,3 +1,11 @@
+.ui.menu {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.ui.input input {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 .ui.secondary.menu {
   margin-top: 2em;
   margin-bottom: 3em;

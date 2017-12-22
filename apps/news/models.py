@@ -47,6 +47,10 @@ class News(BaseModel):
         verbose_name=_('Image'),
         upload_to=BaseModel.file_upload_path
     )
+    show_image_on_preview = models.BooleanField(
+        default=True,
+        verbose_name=_('Show image on preview'),
+    )
     views = models.PositiveIntegerField(
         default=0,
         verbose_name=_('Views')

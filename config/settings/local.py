@@ -16,3 +16,7 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = []
 
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+# Shell plus pre imports
+SHELL_PLUS_PRE_IMPORTS = [('{}.factories'.format(app), '*')
+                          for app in INSTALLED_APPS]  # noqa
