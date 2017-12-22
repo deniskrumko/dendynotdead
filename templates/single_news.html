@@ -29,9 +29,9 @@
     <p class="text-faded">{% if news.author %}by {{ news.author.full_name }} at {% endif %}{{ news.created }}</p>
     {% autoescape off %}
     <p>{{ news.full_text }}</p>
-    {% lorem 5 p %}
     {% endautoescape %}
 
+    {% comment %}
     <div class="">
       <span class="news-meta"><i class="heart icon"></i>0 Likes</span>
       <span class="news-meta"><i class="user icon"></i>0 Views</span>
@@ -47,6 +47,7 @@
     <button class="ui circular google plus icon button">
       <i class="google plus icon"></i>
     </button>
+    {% endcomment %}
   </div>
 </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 {% extends "base_template.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block extrastyle %}
 {{ block.super }}
@@ -7,6 +7,14 @@
 {% endblock %}
 
 {% block content %}
+{% if not news %}
+  <div class="ui centered grid">
+    <h1>{% trans "Sorry, currently author is creating original content."%}</h1>
+
+  </div>
+  <br><br>
+  <div class="ui large active centered inline loader"></div>
+{% else %}
 <div class="ui four stackable cards">
 
   {% for news_item in news %}
@@ -28,7 +36,7 @@
     </div>
     {% else %}
     <div class="content">
-      <div class="right floated meta">2 days ago</div>
+      {# <div class="right floated meta">2 days ago</div> #}
       <a class="header" href="/news/{{ news_item.slug }}">{{ news_item.title }}</a>
       <div class="description">
         {{ news_item.preview }}
@@ -36,12 +44,18 @@
     </div>
     {% endif %}
 
+
     <div class="extra content">
+      {% comment %}
       <i class="empty heart icon"></i>
       {{ news_item.views }}
       <i class="user outline icon"></i>
       {{ news_item.likes_count }}
+      {% endcomment %}
+      {{ news_item.created }}
     </div>
+
+
   </div>
   {% endfor %}
 
@@ -64,5 +78,5 @@
     </a>
   </div>
 </div>
-
+{% endif %}
 {% endblock %}
