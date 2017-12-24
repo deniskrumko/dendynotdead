@@ -1,5 +1,6 @@
 .dnd-logo {
   padding-left: 20px;
+  position: relative;
 }
 
 .logo-line {
@@ -10,10 +11,27 @@
   width: 5px;
   height: 5px;
   float: left;
+  transition: all 0.3s ease;
 }
 
-.logo-pixel:hover {
-  background: red;
+.pixel-logo:hover .logo-pixel{
+  transform: scale(1.5);
+}
+
+.pixel-logo {
+  position: absolute;
+}
+
+.hidden-logo {
+  position: absolute;
+  z-index: -100;
+  width: 95px;
+  text-align: center;
+  font-weight: 300;
+  font-family: 'Source Sans Pro';
+  letter-spacing: 12px;
+  font-size: 15px;
+  line-height: 19px;
 }
 
 .black {
@@ -22,4 +40,8 @@
 
 .red {
   background: red;
+}
+
+.text-red {
+  color: red;
 }
