@@ -14,6 +14,14 @@
     .tablet-show { display: none !important; }
 }
 
+@media screen and (max-width: 650px){
+    .mobile-hidden { display: none !important; }
+}
+
+@media screen and (min-width: 650px){
+    .mobile-show { display: none !important; }
+}
+
 .text-center {
   text-align: center;
 }

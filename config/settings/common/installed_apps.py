@@ -12,6 +12,7 @@ INSTALLED_APPS = [
 LOCAL_APPS = [
     'apps.core',
     'apps.dendynotdead',
+    'apps.music',
     'apps.news',
     'apps.users',
 ]

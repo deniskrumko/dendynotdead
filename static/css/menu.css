@@ -43,3 +43,8 @@
 .ui.secondary.menu .dropdown.item:hover, .ui.secondary.menu .link.item:hover, .ui.secondary.menu a.item:hover {
     background: rgba(0,0,0,.03);
 }
+
+.mybutton {
+  margin-top: 8px !important;
+  font-size: 12px !important;
+}

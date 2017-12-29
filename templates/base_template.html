@@ -14,29 +14,19 @@
 {% block body %}
 
 <div class="ui right vertical inverted sidebar labeled icon menu">
-  <a class="active item">
-    <i class="newspaper icon"></i>
-    News
+  {% for item in sidemenu %}
+  <a class="{% if item.0 == active_menu %}active {% endif %}item" href="{{ item.1 }}">
+    <i class="{{ item.2 }} icon"></i>
+    {{ item.0 }}
   </a>
-  <a class="item">
-    <i class="play icon"></i>
-    Music
-  </a>
-  <a class="item">
-    <i class="id card outline icon"></i>
-    About
-  </a>
-  <a class="item">
-    <i class="search icon"></i>
-    Search
-  </a>
+  {% endfor %}
 </div>
 
 {% block menu %}
 <div class="ui secondary menu container">
-  <div class="dnd-logo">
+  <div class="dnd-logo" onclick="location.href='/about/';">
     <div class="pixel-logo">
-      {% for line in menu %}
+      {% for line in logo %}
       <div class="logo-line">
         {% for pixel in line %}
         <div class="logo-pixel {% if pixel == '1' %}black{% elif pixel == '2' %}red{% endif %}"></div>
@@ -52,9 +42,9 @@
         <i class="search link icon"></i>
       </div>
     </div>
-    <a class="active item" href="/news">News</a>
-    <a class="item">Music</a>
-    <a class="item">About</a>
+    {% for item in menu %}
+    <a class="{% if item.0 == active_menu %}active {% endif %}item" href="{{ item.1 }}">{{ item.0}}</a>
+    {% endfor %}
   </div>
   <div class="right menu mobile-show-menu">
     <div class="item" id="toggle-menu">
@@ -70,5 +60,7 @@
 {% endblock %}
 </div>
 
+{% block afterbody %}
+{% endblock %}
 
 {% endblock %}

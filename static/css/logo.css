@@ -1,6 +1,7 @@
 .dnd-logo {
   padding-left: 20px;
   position: relative;
+  cursor: pointer;
 }
 
 .logo-line {

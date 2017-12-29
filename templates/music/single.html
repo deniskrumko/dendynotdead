@@ -1,0 +1,43 @@
+{% extends "base_template.html" %}
+{% load static %}
+
+{% block content %}
+<div class="ui stackable grid">
+  <div class="ui row">
+    <div class="ui breadcrumb">
+      <a class="section" href="/music/#{{ track.slug }}">Музыка</a>
+      <i class="right angle icon divider"></i>
+      <div class="active section">{{ track.name }}</div>
+    </div>
+  </div>
+  <div class="five wide column">
+  {% if track.image %}
+  <img class="ui fluid image" src="{{ track.image.url }}">
+  {% else %}
+    <img class="ui medium centered image" src="{% static 'images/no-image.png' %}">
+  {% endif %}
+  </div>
+  <div class="eleven wide column">
+    <h1>{{ track.name }}</h1>
+    <p>{{ track.description }}</p>
+
+    {% comment %}
+    <div class="">
+      <span class="news-meta"><i class="heart icon"></i>0 Likes</span>
+      <span class="news-meta"><i class="user icon"></i>0 Views</span>
+      <span class="news-meta"><i class="alarm icon"></i>0 Shares</span>
+    </div>
+    <br>
+    <button class="ui circular vk icon button">
+      <i class="vk icon"></i>
+    </button>
+    <button class="ui circular twitter icon button">
+      <i class="twitter icon"></i>
+    </button>
+    <button class="ui circular google plus icon button">
+      <i class="google plus icon"></i>
+    </button>
+    {% endcomment %}
+  </div>
+</div>
+{% endblock %}

@@ -4,7 +4,7 @@ from .models import News
 
 
 class NewsView(TemplateView):
-    template_name = 'news.html'
+    template_name = 'news/list.html'
     news_per_page = 12
     pagination_window = 5
 
@@ -46,11 +46,12 @@ class NewsView(TemplateView):
         context = get_request.context_data
         page_id = request.GET.get('page', 1)
         context = self._get_paginated_news(context, page_id)
+        context['active_menu'] = 'Новости'
         return get_request
 
 
 class SingleNewsView(TemplateView):
-    template_name = 'single_news.html'
+    template_name = 'news/single.html'
 
     def get(self, request, **kwargs):
         context = self.get_context_data(**kwargs)
@@ -60,4 +61,5 @@ class SingleNewsView(TemplateView):
 
         if news:
             context['news'] = news
+            context['active_menu'] = 'Новости'
             return self.render_to_response(context)
