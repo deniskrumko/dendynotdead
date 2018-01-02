@@ -38,7 +38,7 @@
   <div class="right menu mobile-hidden-menu">
     <div class="ui category search item">
       <div class="ui icon input">
-        <input class="prompt shrink-search" type="text" placeholder="Search">
+        <input class="prompt shrink-search" type="text" placeholder="Поиск">
         <i class="search link icon"></i>
       </div>
     </div>
@@ -47,18 +47,70 @@
     {% endfor %}
   </div>
   <div class="right menu mobile-show-menu">
-    <div class="item" id="toggle-menu">
+    <div class="item toggle-menu">
       <i class="content icon toggle-menu-icon"></i>
+    </div>
+  </div>
+</div>
+
+<div id="slim-menu" class="hide-slim-menu">
+  <div class="ui container">
+    <div class="dnd-logo" onclick="location.href='/about/';">
+      <div class="pixel2-logo">
+        {% for line in slim_logo %}
+        <div class="logo2-line">
+          {% for pixel in line %}
+          <div class="logo-pixel {% if pixel == '1' %}white{% elif pixel == '2' %}red{% endif %}"></div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="slim-right-menu mobile-hidden-menu">
+      {% for item in menu %}
+      <a class="{% if item.0 == active_menu %}active{% endif %}it" href="{{ item.1 }}">{{ item.0}}</a>
+      {% endfor %}
+    </div>
+    <div class="mobile-show-menu" style="float: right; margin: 14px 25px;">
+      <div class="item toggle-menu">
+        <i class="content icon inverted toggle-menu-icon"></i>
+      </div>
     </div>
   </div>
 </div>
 {% endblock %}
 
-<div class="ui container">
-{% block content %}
-
-{% endblock %}
+<div class="page-wrap">
+  <div class="ui container">
+    {% block content %}
+    {% endblock %}
+  </div>
 </div>
+
+<div class="ui inverted vertical footer site-footer segment">
+    <div class="ui center aligned container">
+      <div class="dnd3-logo">
+        <div class="logo3-line">
+          <div class="logo3-pixel red"></div>
+          <div class="logo3-pixel"></div>
+          <div class="logo3-pixel red"></div>
+        </div>
+        <div class="logo3-line">
+          <div class="logo3-pixel"></div>
+          <div class="logo3-pixel"></div>
+          <div class="logo3-pixel"></div>
+        </div>
+        <div class="logo3-line">
+          <div class="logo3-pixel white"></div>
+          <div class="logo3-pixel"></div>
+          <div class="logo3-pixel white"></div>
+        </div>
+      </div>
+      <div class="ui horizontal inverted small link list footer-list">
+        <a class="item" href="#">2018 &copy; Dendy Not Dead</a>
+      </div>
+    </div>
+  </div>
 
 {% block afterbody %}
 {% endblock %}

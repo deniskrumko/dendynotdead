@@ -1,6 +1,24 @@
 {% extends "base_template.html" %}
 {% load static %}
 
+{# CSS #}
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'css/music.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/music_single.css' %}">
+{% endblock %}
+
+{# JS #}
+{% block extrajs %}
+{{ block.super }}
+<script src="{% static 'js/audiojs/audio.min.js' %}"></script>
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="ui stackable grid">
   <div class="ui row">
@@ -19,7 +37,41 @@
   </div>
   <div class="eleven wide column">
     <h1>{{ track.name }}</h1>
+    <p>{{ track.year }}</p>
     <p>{{ track.description }}</p>
+
+    <div class="audio">
+      <audio src="{{ track.file.url }}" preload="auto" />
+    </div>
+
+    {% if extra_files %}
+
+    <h2>Дополнительные файлы</h2>
+
+    <div class="ui list">
+      {% for category in extra_files %}
+        {% if category.1 %}
+        <div class="item">
+          <i class="folder icon"></i>
+          <div class="content">
+            <div class="header">{{ category.0 }}</div>
+            <div class="list">
+              {% for file in category.1 %}
+                <div class="item">
+                  <i class="angle right icon"></i>
+                  <div class="content">
+                    <a class="description" href="{{ file.file.url }}">{{ file }}</a>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% endif %}
 
     {% comment %}
     <div class="">

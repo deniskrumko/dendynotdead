@@ -124,7 +124,7 @@ class TrackFile(models.Model):
     )
 
     def __str__(self):
-        return f'{self.track.name} - {self.file.name}'
+        return self.file.name
 
     class Meta:
         verbose_name = _('Track File')

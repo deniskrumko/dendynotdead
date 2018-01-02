@@ -4,6 +4,7 @@
 {# CSS #}
 {% block extrastyle %}
 {{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'css/music_list.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/music.css' %}">
 {% endblock %}
 
@@ -20,7 +21,7 @@
 {% if not tracks %}
   {# If there are no tracks - show "Sorry" message #}
   <div class="ui centered grid">
-    <h1>{% trans "Sorry, currently author has creative crisis."%}</h1>
+    <h1>{% trans "Подождите, у автора сейчас творческий кризис."%}</h1>
   </div>
   <br><br>
   <div class="ui large active centered inline loader"></div>
@@ -34,13 +35,13 @@
 {% for track in tracks %}
 <div class="item">
   <div class="image track-image">
-    <a class="ui red right corner label {% if forloop.counter != 1 %}hidden-label{% endif %}"><i class="play icon" style="cursor: pointer;"></i></a>
+    <a class="ui red right corner label {% if forloop.counter != 1 %}displaynone{% endif %}"><i class="play icon" style="cursor: pointer;"></i></a>
     {% if track.image %}
     <img src="{{ track.image.url }}">
     {% else %}
     <img src="{% static 'images/no-image.png' %}">
     {% endif %}
-    <a class="anchor" id="{{ tr.slug }}"></a>
+    <a class="anchor" id="{{ track.slug }}"></a>
   </div>
   <div class="content">
     <a class="header track" href="#" data-src="{{ track.file.url }}">{{ track.name }}</a>
@@ -58,10 +59,10 @@
       {# <i class="empty heart icon"></i>0 #}
       {# <i class="sound icon"></i>0 #}
       <div class="mobile-show">
-        <a href="/music/{{ track.slug }}/" class="ui primary basic button mybutton">Показать полностью</a>
+        <a href="/music/{{ track.slug }}/" class="ui primary basic button show-full">Показать полностью</a>
       </div>
       <div class="mobile-hidden">
-        <a href="/music/{{ track.slug }}/" style="font-family: 'Source Sans Pro'">Показать полностью</a>
+        <a href="/music/{{ track.slug }}/">Показать полностью</a>
       </div>
 
     </div>

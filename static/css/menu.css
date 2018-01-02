@@ -1,9 +1,5 @@
-.ui.menu {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-.ui.input input {
-  font-family: 'Source Sans Pro', sans-serif;
+.ui.category.search.item {
+  font-weight: 300 !important;
 }
 
 .ui.secondary.menu {
@@ -11,20 +7,31 @@
   margin-bottom: 3em;
 }
 
+.ui.secondary.menu .item {
+  font-family: sans-serif;
+  font-weight: 200;
+}
+
 .ui.search .prompt {
-    border-radius: .28571429rem;
+  border-radius: .28571429rem;
 }
 
-@media screen and (max-width: 500px){
-    .mobile-hidden-menu { display: none !important; }
+@media screen and (max-width: 500px) {
+  .mobile-hidden-menu {
+    display: none !important;
+  }
 }
 
-@media screen and (min-width: 500px){
-    .mobile-show-menu { display: none !important; }
+@media screen and (min-width: 500px) {
+  .mobile-show-menu {
+    display: none !important;
+  }
 }
 
-@media screen and (max-width: 580px){
-    .shrink-search { width: 120px; }
+@media screen and (max-width: 580px) {
+  .shrink-search {
+    width: 120px;
+  }
 }
 
 .toggle-menu-icon {
@@ -37,14 +44,42 @@
 }
 
 .ui.secondary.menu .active.item:hover {
-    background: rgba(0,0,0,.13);
+  background: rgba(0, 0, 0, .13);
 }
 
 .ui.secondary.menu .dropdown.item:hover, .ui.secondary.menu .link.item:hover, .ui.secondary.menu a.item:hover {
-    background: rgba(0,0,0,.03);
+  background: rgba(0, 0, 0, .03);
 }
 
-.mybutton {
-  margin-top: 8px !important;
-  font-size: 12px !important;
+.hide-slim-menu {
+  top: -65px !important;
+}
+
+#slim-menu {
+  position: fixed;
+  background: #21252B;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  height: 43px;
+  transition: all 0.4s ease-out;
+  box-shadow: -2px -1px 17px 0px #000000c7;
+}
+
+.slim-right-menu {
+  float: right;
+  padding-top: 10px;
+}
+
+.slim-right-menu a {
+  font-family: sans-serif;
+  font-weight: 200;
+  margin: 16px;
+  color: #eee;
+}
+
+.activeit {
+  border-bottom: 3px red solid;
+  padding-bottom: 12px;
+  color: white !important;
 }

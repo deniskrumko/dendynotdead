@@ -1,57 +1,7 @@
-.ui.items>.item>.content>.header {
-    font-family: "Source Sans Pro";
-    font-size: 24px !important;
-    margin: auto;
-    font-weight: 900;
-}
-
-.audio {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  z-index: 100;
-}
-.audiojs {
-  border-radius: 4px;
-  background-image: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.track-image {
-  cursor: pointer;
-}
-.hidden-label {
-  display: none !important;
-}
-.playing {
-  color: red !important;
-}
-.image {
-  transition: all 0.3s ease;
-}
-.image:hover {
-  transform: scale(1.03);
-}
-.audiojs .play-pause {width: 38px;}
-@media screen and (min-width: 1000px){
-  .audiojs { width: 700px; margin-left: -350px;}
-  .audiojs .scrubber { width: 77%; }
-}
-
-@media screen and (min-width: 530px) and (max-width: 1000px){
-  .audiojs { width: 500px; margin-left: -250px;}
-  .audiojs .scrubber { width: 68%; }
-}
-
-@media screen and (max-width: 530px){
-  .audiojs { width: 300px; margin-left: -150px;}
-  .audiojs .scrubber { width: 47%; }
-}
-
-.header.track {
-  line-height: 24px !important;
-}
-
 .audiojs .time {
     font-family: "Lato", sans-serif !important;
+}
+
+.audiojs .play-pause {
+  width: 38px;
 }

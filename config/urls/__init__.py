@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^$', RedirectView.as_view(url='news/'), name='index'),
     url(r'^news/', include('apps.news.urls')),
     url(r'^music/', include('apps.music.urls')),
+    url(r'^about/', include('apps.about.urls')),
+    url(r'^search/', include('apps.search.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^test/404/', TemplateView.as_view(template_name='errors/404.html')),
     url(r'^test/500/', TemplateView.as_view(template_name='errors/500.html'))

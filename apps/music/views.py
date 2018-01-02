@@ -1,7 +1,7 @@
 from django.views.generic.base import TemplateView
 from django.http import Http404
 
-from .models import Track
+from .models import Track, File
 
 
 class TrackListView(TemplateView):
@@ -28,4 +28,10 @@ class TrackView(TemplateView):
 
         context['track'] = track
         context['active_menu'] = 'Музыка'
+
+        context['extra_files'] = [
+            (name, track.extra_files.filter(file__category=key))
+            for key, name in File.CATEGORIES
+        ] if track.extra_files.exists() else None
+
         return self.render_to_response(context)

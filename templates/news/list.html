@@ -9,7 +9,7 @@
 {% block content %}
 {% if not news %}
   <div class="ui centered grid">
-    <h1>{% trans "Sorry, currently author is creating original content."%}</h1>
+    <h1>{% trans "Подождите, автор создает оригинальный контент."%}</h1>
 
   </div>
   <br><br>
@@ -36,7 +36,7 @@
     </div>
     {% else %}
     <div class="content">
-      {# <div class="right floated meta">2 days ago</div> #}
+      <div class="right floated meta">2 days ago</div>
       <a class="header" href="/news/{{ news_item.slug }}">{{ news_item.title }}</a>
       <div class="description">
         {{ news_item.preview }}
@@ -78,5 +78,7 @@
     </a>
   </div>
 </div>
+
+<br><br>
 {% endif %}
 {% endblock %}
