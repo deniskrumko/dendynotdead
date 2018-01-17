@@ -1,6 +1,7 @@
 from django.views.generic.base import TemplateView
 from django.core.paginator import Paginator
 from .models import News
+from django.http import Http404
 
 
 class NewsView(TemplateView):
@@ -59,7 +60,12 @@ class SingleNewsView(TemplateView):
 
         news = News.objects.filter(slug=page_slug).first()
 
-        if news:
-            context['news'] = news
-            context['active_menu'] = 'Новости'
-            return self.render_to_response(context)
+        if not news:
+            raise Http404("News does not exist")
+
+        context['news'] = news
+        context['active_menu'] = 'Новости'
+
+        news.increment_view()
+
+        return self.render_to_response(context)

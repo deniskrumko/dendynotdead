@@ -5,6 +5,14 @@ from autoslug import AutoSlugField
 
 
 class File(BaseModel):
+    """Model for storing files in specified categories.
+
+    Attributes:
+        name (str): name of file.
+        file (File): file itself.
+        category (str): category of file.
+
+    """
     CATEGORIES = (
         ('music', 'Music'),
         ('gtp', 'Guitar PRO'),
@@ -34,6 +42,7 @@ class File(BaseModel):
 
     @property
     def url(self):
+        """Shortcut to get file URL."""
         return self.file.url if self.file else None
 
     def __str__(self):
@@ -45,7 +54,18 @@ class File(BaseModel):
 
 
 class Track(BaseModel):
-    """Documentation"""
+    """Model for storing track's information.
+
+    Attributes:
+        is_active (bool): display track on site or not.
+        name (str): name of track.
+        year (int): year, when track was created.
+        slug (str): slug from track name.
+        file (File): related ``File`` model.
+        image (File): image file.
+        description (str): track description.
+
+    """
     is_active = models.BooleanField(
         default=True,
         verbose_name=_('Is active'),
@@ -86,6 +106,7 @@ class Track(BaseModel):
     )
 
     def truncated_description(self):
+        """Method to get truncated description."""
         truncate_lenght = 250
 
         if len(self.description) < truncate_lenght:

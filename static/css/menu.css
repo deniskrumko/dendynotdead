@@ -60,7 +60,7 @@
   background: #21252B;
   top: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 1150;
   height: 43px;
   transition: all 0.4s ease-out;
   box-shadow: -2px -1px 17px 0px #000000c7;

@@ -1,5 +1,13 @@
 $(function() {
 
+  $('.ui.sticky')
+    .sticky({
+      context: '#example1',
+      offset: 50,
+      bottomOffset: 750,
+    })
+  ;
+
   // Setup the player to autoplay the next track
   var a = audiojs.createAll({
     trackEnded: function() {

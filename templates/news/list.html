@@ -6,6 +6,17 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
 {% endblock %}
 
+{% block extrajs %}
+{{ block.super }}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.clicks')
+      .popup()
+    ;
+  });
+</script>
+{% endblock %}
+
 {% block content %}
 {% if not news %}
   <div class="ui centered grid">
@@ -15,48 +26,25 @@
   <br><br>
   <div class="ui large active centered inline loader"></div>
 {% else %}
-<div class="ui four stackable cards">
+<div class="ui three stackable cards">
 
   {% for news_item in news %}
-  <div class="card">
-    {% if news_item.image %}
+  <a class="ui card" href="/news/{{ news_item.slug }}">
     <div class="content">
-      <div class="right floated meta">2 days ago</div>
-      <a class="header" href="/news/{{ news_item.slug }}">{{ news_item.title }}</a>
-    </div>
-    <div class="image">
-      <a href="/news/{{ news_item.slug }}" class="">
-        <img class="ui large centered image" src="{{ news_item.image.url }}">
-      </a>
-    </div>
-    <div class="content">
+      {% if news_item.views %}
+      <span class="right floated meta clicks" data-content="Количество кликов" data-position="top right" data-variation="mini inverted"><i class="hand pointer icon"></i>{{ news_item.views }}</span>
+      {% endif %}
+      <div class="header">{{ news_item.title }}</div>
+      <div class="meta">
+        <span class="category">{{ news_item.when }}</span>
+      </div>
       <div class="description">
+        {% autoescape off %}
         {{ news_item.preview }}
+        {% endautoescape %}
       </div>
     </div>
-    {% else %}
-    <div class="content">
-      <div class="right floated meta">2 days ago</div>
-      <a class="header" href="/news/{{ news_item.slug }}">{{ news_item.title }}</a>
-      <div class="description">
-        {{ news_item.preview }}
-      </div>
-    </div>
-    {% endif %}
-
-
-    <div class="extra content">
-      {% comment %}
-      <i class="empty heart icon"></i>
-      {{ news_item.views }}
-      <i class="user outline icon"></i>
-      {{ news_item.likes_count }}
-      {% endcomment %}
-      {{ news_item.created }}
-    </div>
-
-
-  </div>
+  </a>
   {% endfor %}
 
 </div>

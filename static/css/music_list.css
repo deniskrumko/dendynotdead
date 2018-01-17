@@ -10,7 +10,7 @@
   position: fixed;
   bottom: 24px;
   left: 50%;
-  z-index: 3;
+  z-index: 1150;
 }
 
 .audiojs {
@@ -69,4 +69,38 @@
 .show-full {
   margin-top: 8px !important;
   font-size: 12px !important;
+}
+
+.all-songs {
+  border-left: 3px solid #f2f2f2;
+  padding-left: 10px;
+}
+
+.all-songs p {
+  margin-bottom: 0;
+}
+
+.all-songs .name a {
+  color: black;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.all-songs .name :hover{
+  color: red;
+  font-weight: bold;
+}
+
+.all-songs .year {
+  font-size: 10px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.ui .sticky .all-songs-counter {
+  font-size: 12px;
+}
+
+.ui .sticky h2 {
+  margin-bottom: 0 !important;
 }
