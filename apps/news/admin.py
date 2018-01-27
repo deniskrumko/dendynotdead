@@ -8,4 +8,6 @@ class NewsAdmin(admin.ModelAdmin):
     """Admin class for ``News`` model."""
     list_display = (
         'slug',
+        'title',
+        'created',
     )

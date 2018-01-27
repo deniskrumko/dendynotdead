@@ -4,13 +4,28 @@
 {% block extrastyle %}
 {{ block.super }}
 <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/music.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/music_single.css' %}">
+
+{% endblock %}
+
+{# JS #}
+{% block extrajs %}
+{{ block.super }}
+<script src="{% static 'js/audiojs/audio.min.js' %}"></script>
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
 {% endblock %}
 
 {% block content %}
 <div class="ui stackable grid">
   <div class="ui row">
     <div class="ui breadcrumb">
-      <a class="section" href="/news">News</a>
+      <a class="section" href="/news">Новости</a>
       <i class="right angle icon divider"></i>
       <div class="active section">{{ news.title }}</div>
     </div>
@@ -26,10 +41,26 @@
   </div>
   <div class="eleven wide column">
     <h1>{{ news.title }}</h1>
-    <p class="text-faded">{% if news.author %}by {{ news.author.full_name }} at {% endif %}{{ news.created }}</p>
+    <p class="text-faded">{{ news.created }}</p>
     {% autoescape off %}
     <p>{{ news.full_text }}</p>
     {% endautoescape %}
+
+    {% if news.tracks.exists %}
+      <h3>Треки к новости</h3>
+      {% for track in news.tracks.all %}
+      <li style="font-size: 16px; font-weight: 900;"> {{ track.name }}
+        <a style="font-size: 12px; font-weight: 400; margin-left: 10px; line-height: 16px;" href="/music/{{ track.slug }}/">Показать трек</a>
+
+      </li>
+      <br>
+      <div class="audio" style="margin-left: 20px;">
+        <audio src="{{ track.file.url }}" preload="auto" />
+      </div>
+      <br>
+      {% endfor %}
+
+    {% endif %}
 
     {% comment %}
     <div class="">
@@ -50,4 +81,5 @@
     {% endcomment %}
   </div>
 </div>
+<br>
 {% endblock %}

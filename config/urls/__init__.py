@@ -1,12 +1,12 @@
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.views.generic.base import RedirectView, TemplateView
+from django.views.generic.base import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(url='news/'), name='index'),
+    url('', include('apps.dendynotdead.urls')),
     url(r'^news/', include('apps.news.urls')),
     url(r'^music/', include('apps.music.urls')),
     url(r'^about/', include('apps.about.urls')),

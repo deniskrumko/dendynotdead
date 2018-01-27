@@ -11,7 +11,7 @@ class NewsView(TemplateView):
 
     def _get_paginated_news(self, context, page_id):
         """Method to add pages info to context."""
-        all_news = News.objects.all().order_by('created').reverse()
+        all_news = News.objects.order_by('-created')
         if not all_news:
             return context
         p = Paginator(all_news, self.news_per_page)

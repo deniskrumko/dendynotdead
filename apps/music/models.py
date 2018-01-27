@@ -120,7 +120,7 @@ class Track(BaseModel):
     class Meta:
         verbose_name = _('Track')
         verbose_name_plural = _('Tracks')
-        ordering = ('-year', 'name')
+        ordering = ('-created',)
 
 
 class TrackFile(models.Model):

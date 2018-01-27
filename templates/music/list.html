@@ -32,7 +32,14 @@
 </div>
 
 <div class="ui two column stackable grid">
-  <div class="twelve wide column">
+  <div class="eleven wide column">
+    <div class="ui info message">
+      <ul class="list">
+        <p><i class="play icon"></i> Нажмите на <b>картинку</b> или <b>название песни</b> для воспроизведения</p>
+        <p><i class="write icon"></i>Нажмите <b>показать полностью</b> для просмотра всей информации</p>
+        <p><i class="sound icon"></i>Рекомендуется к прослушиванию в <b>наушниках</b></p>
+      </ul>
+    </div>
     <div class="ui items unstackable" id="example1">
     {% for track in tracks %}
     <a class="anchor" id="{{ track.slug }}"></a>
@@ -73,8 +80,15 @@
     <br>
     {% endfor %}
     </div>
+    <div class="text-center text-faded">
+      Остальные треки в разработке, ожидайте
+      <i class="notched circle loading icon" style="margin-left: 5px;"></i>
+    </div>
+    <br>
+    <br>
+    <br>
   </div>
-  <div class="four wide column tablet-hidden">
+  <div class="five wide column tablet-hidden">
     <div class="ui sticky">
       <h2>Все треки</h2>
       <p class="all-songs-counter">Всего: {{ tracks|length }}</p>

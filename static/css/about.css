@@ -1,0 +1,17 @@
+.questions p a {
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.questions p {
+  margin-bottom: 5px;
+}
+
+.questions p a:hover {
+  color: red;
+}
+
+.about p {
+  font-size: 16px;
+  text-align: justify;
+}

@@ -1,0 +1,116 @@
+{% extends "base_template.html" %}
+{% load static i18n %}
+
+{% block extrajs %}
+{{ block.super }}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".track").hover(function () {
+      var name = $(this).data("name");
+      $("#track-name").text(name);
+      $("#track-name").css('opacity', 1);
+    },
+    function () {
+      $("#track-name").css('opacity', 0);
+    });
+  });
+</script>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="ui stackable grid">
+<div class="ten wide column">
+  <div class="">
+    <h2><a href="/about" class="linky big">Добро пожаловать</a></h2>
+    <div style="font-size: 16px; text-align: justify;">
+      <p><b>Dendy Not Dead</b> — это мой маленький музыкальный проект, в котором
+      я пытаюсь собрать все ритмы и мелодии, приходящие в мою голову, во что-то
+      напоминающее музыку. Получается это плохо или не совсем — судить вам.</p>
+      <p>Поскольку времени на запись нормальной музыки у меня особо нет, то
+      все треки сделаны в <b>Guitar Pro 6</b>, отсюда это искусственное звучание.
+      Зато получается материализовывать свои идеи гораздо быстрее.</p>
+      <p>Что новенького тут вышло можно посмотреть
+      в разделе <b><a href="/news">Новости</a></b>, все треки собраны в разделе
+      <b><a href="/music">Музыка</a></b>, а все подробности о том,
+      почему <b>Dendy</b> и почему же <b>Not Dead</b> — в разделе
+      <b><a href="/about">О проекте</a></b>. </p>
+    </div>
+    <div class="" style="float: right; margin: 10px 25px;">
+      <img class="ui avatar image" src="{% static 'images/me.jpg' %}">
+      <span>Денис Крумко</span>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="">
+    <h2><a href="/music" class="linky big">Музыка</a></h2>
+
+    {% if not tracks %}
+      <p style="font-size: 16px;">Пока на сайт не загружено ни одного трека</p>
+    {% else %}
+    <div class="ui grid" style="margin: 0px;">
+      <div class="doubling six column row">
+      {% for track in tracks %}
+        <div class="column track" style="padding: 5px;" data-name="{{ track.name }}">
+          <a href="/music/{{ track.slug }}">
+          {% if track.image %}
+          <img class="ui image corners" src="{{ track.image.url }}">
+          {% else %}
+          <img class="ui image corners" src="{% static 'images/no-image.png' %}" alt="">
+          {% endif %}
+          </a>
+        </div>
+      {% endfor %}
+      <div class="column track" style="padding: 5px;" data-name="Показать все треки">
+        <button class="ui button" onclick="location.href='/music';" style="width: 100%; height: 100%;">
+          Все треки
+        </button>
+      </div>
+      </div>
+      <p id="track-name" class="text-center" style="width: 100%; opacity: 0; transition: all 0.3s ease;">1</p>
+    </div>
+
+    {% endif %}
+
+
+    <br>
+  </div>
+</div>
+<div class="six wide column">
+  <div class="">
+    <h2><a href="/news" class="linky big">Новости</a></h2>
+    <div class="ui divided unstackable items">
+      {% for n in news %}
+      <div class="item">
+        <div class="ui mini image">
+          {% if n.image %}
+          <img src="{{ n.image.url }}">
+          {% else %}
+          <img src="{% static 'images/no-image.png' %}" alt="">
+          {% endif %}
+        </div>
+        <div class="middle aligned content">
+          <div class="header">
+            <a href="/news/{{ n.slug }}">{{ n.title }}</a>
+          </div>
+          <div class="description">
+            {% autoescape off %}
+            {{ n.preview }}
+            {% endautoescape %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <br>
+
+  </div>
+</div>
+</div>
+{% endblock %}

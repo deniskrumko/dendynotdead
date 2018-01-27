@@ -7,11 +7,10 @@ from .models import Track, File
 class TrackListView(TemplateView):
     """View to display list of tracks."""
     template_name = 'music/list.html'
-    queryset = Track.objects.filter(is_active=True)
 
     def get_context_data(self, **kwargs):
         return {
-            'tracks': self.queryset,
+            'tracks': Track.objects.filter(is_active=True),
             'active_menu': 'Музыка',
         }
 
@@ -19,13 +18,12 @@ class TrackListView(TemplateView):
 class TrackView(TemplateView):
     """View to see a single track."""
     template_name = 'music/single.html'
-    queryset = Track.objects.filter(is_active=True)
 
     def get(self, request, **kwargs):
         context = self.get_context_data(**kwargs)
         page_slug = kwargs.get('track_slug')
 
-        track = self.queryset.filter(slug=page_slug).first()
+        track = Track.objects.filter(is_active=True, slug=page_slug).first()
 
         if not track:
             raise Http404("Track does not exist")

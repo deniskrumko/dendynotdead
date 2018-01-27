@@ -1,18 +1,18 @@
 /* DND logo */
 .dnd-logo {
-  padding-left: 20px;
   position: relative;
   cursor: pointer;
+  top: -14px;
 }
 
 /* Line of pixels */
 
 .logo-line {
-  width: 95px;
+  width: 133px;
 }
 
 .logo2-line {
-  width: 235px;
+  width: 329px;
 }
 
 .logo3-line {
@@ -20,8 +20,8 @@
 }
 
 .logo-pixel {
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   float: left;
   transition: all 0.3s ease;
 }
@@ -43,7 +43,7 @@
 
 .pixel2-logo {
   position: absolute;
-  margin-top: 14px;
+  margin-top: 32px;
 }
 
 .pixel2-logo:hover .logo-pixel{

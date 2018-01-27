@@ -5,6 +5,7 @@ from apps.core.models import BaseModel
 from apps.users.models import User
 from autoslug import AutoSlugField
 from django.utils import timezone
+from apps.music.models import Track
 
 
 class News(BaseModel):
@@ -48,13 +49,15 @@ class News(BaseModel):
         verbose_name=_('Image'),
         upload_to=BaseModel.file_upload_path
     )
-    show_image_on_preview = models.BooleanField(
-        default=True,
-        verbose_name=_('Show image on preview'),
-    )
     views = models.PositiveIntegerField(
         default=0,
         verbose_name=_('Views')
+    )
+    tracks = models.ManyToManyField(
+        to=Track,
+        blank=True,
+        related_name='news',
+        verbose_name=_('Tracks'),
     )
 
     def __str__(self):

@@ -20,10 +20,11 @@ def menu(request):
             '11100110101011100100101010100100111001101110111',
         ],
         'sidemenu': (
+            ('Главная', '/', 'power'),
             ('Новости', '/news/', 'newspaper'),
             ('Музыка', '/music/', 'play'),
-            ('О проекте', '/about/', 'id card outline'),
-            ('Поиск', '/search/', 'search'),
+            ('О проекте', '/about/', 'user circle outline'),
+            # ('Поиск', '/search/', 'search'),
         ),
         'menu': (
             ('Новости', '/news/'),
