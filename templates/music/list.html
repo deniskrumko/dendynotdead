@@ -11,6 +11,9 @@
 {# JS #}
 {% block extrajs %}
 {{ block.super }}
+<script type="text/javascript">
+  var heyhey = '123';
+</script>
 <script src="{% static 'js/audiojs/audio.min.js' %}"></script>
 <script src="{% static 'js/music.js' %}"></script>
 {% endblock %}
@@ -59,7 +62,9 @@
         </div>
         <div class="description mobile-hidden">
           {% if track.description %}
-            {{ track.truncated_description }}
+            {% autoescape off %}
+              {{ track.truncated_description }}
+            {% endautoescape %}
           {% else %}
           Нет описания
           {% endif %}

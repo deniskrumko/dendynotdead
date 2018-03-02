@@ -38,7 +38,9 @@
   <div class="eleven wide column">
     <h1>{{ track.name }}</h1>
     <p>{{ track.year }}</p>
-    <p>{{ track.description }}</p>
+    {% autoescape off %}
+      <p>{{ track.description }}</p>
+    {% endautoescape %}
 
     <div class="audio">
       <audio src="{{ track.file.url }}" preload="auto" />

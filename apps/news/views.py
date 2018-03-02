@@ -48,6 +48,7 @@ class NewsView(TemplateView):
         page_id = request.GET.get('page', 1)
         context = self._get_paginated_news(context, page_id)
         context['active_menu'] = 'Новости'
+        context['title'] = 'Dendy Not Dead - Новости'
         return get_request
 
 
@@ -65,6 +66,7 @@ class SingleNewsView(TemplateView):
 
         context['news'] = news
         context['active_menu'] = 'Новости'
+        context['title'] = f'DND - {news.title}'
 
         news.increment_view()
 

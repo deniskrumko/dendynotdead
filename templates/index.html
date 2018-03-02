@@ -24,7 +24,7 @@
 
 {% block content %}
 <div class="ui stackable grid">
-<div class="ten wide column">
+<div class="eleven wide column">
   <div class="">
     <h2><a href="/about" class="linky big">Добро пожаловать</a></h2>
     <div style="font-size: 16px; text-align: justify;">
@@ -82,7 +82,7 @@
     <br>
   </div>
 </div>
-<div class="six wide column">
+<div class="five wide column">
   <div class="">
     <h2><a href="/news" class="linky big">Новости</a></h2>
     <div class="ui divided unstackable items">
@@ -108,6 +108,9 @@
       </div>
       {% endfor %}
     </div>
+    {% if request.user.is_superuser %}
+    <a href="/admin" class="ui primary button" style="width: 100%;">Admin UI</a>
+    {% endif %}
     <br>
 
   </div>

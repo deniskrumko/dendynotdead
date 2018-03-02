@@ -7,4 +7,5 @@ class AboutView(TemplateView):
     def get_context_data(self, **kwargs):
         return {
             'active_menu': 'О проекте',
+            'title': 'Dendy Not Dead - О проекте'
         }

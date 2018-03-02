@@ -12,6 +12,7 @@ class TrackListView(TemplateView):
         return {
             'tracks': Track.objects.filter(is_active=True),
             'active_menu': 'Музыка',
+            'title': 'Dendy Not Dead - Музыка'
         }
 
 
@@ -30,7 +31,7 @@ class TrackView(TemplateView):
 
         context['track'] = track
         context['active_menu'] = 'Музыка'
-
+        context['title'] = f'DND - {track.name}'
         context['extra_files'] = [
             (name, track.extra_files.filter(file__category=key))
             for key, name in File.CATEGORIES

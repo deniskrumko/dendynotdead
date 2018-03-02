@@ -4,7 +4,7 @@
 
 .ui.secondary.menu {
   margin-top: 3em;
-  margin-bottom: 4em;
+  margin-bottom: 3em;
 }
 
 @media screen and (max-width: 500px) {
@@ -14,17 +14,10 @@
   }
 }
 
-@media screen and (min-width: 500px) {
-  .ui.secondary.menu {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
-
 .ui.secondary.menu .item {
   font-family: sans-serif;
   font-weight: 200;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .ui.search .prompt {
@@ -50,7 +43,7 @@
 }
 
 .toggle-menu-icon {
-  font-size: 26px !important;
+  font-size: 20px !important;
 }
 
 .ui.secondary.menu .item {
@@ -76,26 +69,26 @@
   top: 0;
   width: 100%;
   z-index: 1150;
-  height: 60px;
+  height: 45px;
   transition: all 0.4s ease-out;
   box-shadow: -2px -1px 17px 0px #000000c7;
 }
 
 .slim-right-menu {
   float: right;
-  padding-top: 22px;
-  font-size: 18px;
+  padding-top: 13px;
+  font-size: 16px;
 }
 
 .slim-right-menu a {
   font-family: sans-serif;
   font-weight: 200;
-  margin: 16px;
+  margin: 20px;
   color: #eee;
 }
 
 .activeit {
   border-bottom: 3px red solid;
-  padding-bottom: 15px;
+  padding-bottom: 9px;
   color: white !important;
 }
