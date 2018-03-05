@@ -99,6 +99,9 @@
           <div class="header">
             <a href="/news/{{ n.slug }}">{{ n.title }}</a>
           </div>
+          <div class="meta">
+            <span class="category">{{ n.when }}</span>
+          </div>
           <div class="description">
             {% autoescape off %}
             {{ n.preview }}

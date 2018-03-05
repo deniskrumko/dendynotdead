@@ -1,9 +1,16 @@
-.ui.items>.item>.content>.header {
-  font-family: 'Open Sans', cursive;
-  font-size: 26px !important;
+.header.track {
+  font-family: 'Open Sans', cursive !important;
   margin: auto;
-  font-weight: 900;
+  font-weight: 900 !important;
   line-height: 26px !important;
+}
+
+@media screen and (max-width: 650px){
+    .header.track { font-size: 20px !important; }
+}
+
+@media screen and (min-width: 650px){
+    .header.track { font-size: 26px !important; }
 }
 
 .audio {
@@ -103,4 +110,9 @@
 
 .ui .sticky h2 {
   margin-bottom: 0 !important;
+}
+
+@media only screen and (max-width: 767px){
+.ui.unstackable.items>.item>.image, .ui.unstackable.items>.item>.image>img {
+    width: 95px!important;
 }

@@ -50,9 +50,9 @@
       <div class="image track-image">
         <a class="ui red right corner label {% if forloop.counter != 1 %}displaynone{% endif %}"><i class="play icon" style="cursor: pointer;"></i></a>
         {% if track.image %}
-        <img src="{{ track.image.url }}">
+        <img class="track-img" src="{{ track.image.url }}">
         {% else %}
-        <img src="{% static 'images/no-image.png' %}">
+        <img class="track-img" src="{% static 'images/no-image.png' %}">
         {% endif %}
       </div>
       <div class="content">
@@ -61,9 +61,9 @@
           <span>{{ track.year }}</span>
         </div>
         <div class="description mobile-hidden">
-          {% if track.description %}
+          {% if track.preview %}
             {% autoescape off %}
-              {{ track.truncated_description }}
+              {{ track.preview }}
             {% endautoescape %}
           {% else %}
           Нет описания

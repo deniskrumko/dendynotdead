@@ -89,7 +89,7 @@ class Track(BaseModel):
     file = models.ForeignKey(
         File,
         null=True,
-        blank=False,
+        blank=True,
         related_name='tracks',
         verbose_name=_('File'),
     )
@@ -99,20 +99,17 @@ class Track(BaseModel):
         upload_to=BaseModel.file_upload_path,
         verbose_name=_('Image')
     )
+    preview = models.TextField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Preview'),
+    )
     description = models.TextField(
         null=True,
         blank=True,
         verbose_name=_('Description'),
     )
-
-    def truncated_description(self):
-        """Method to get truncated description."""
-        truncate_lenght = 250
-
-        if len(self.description) < truncate_lenght:
-            return self.description
-
-        return self.description[:truncate_lenght] + '...'
 
     def __str__(self):
         return self.name
