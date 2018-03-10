@@ -30,6 +30,8 @@ class TrackView(TemplateView):
             raise Http404("Track does not exist")
 
         context['track'] = track
+        context['next_track'] = track.get_previous()
+        context['prev_track'] = track.get_next()
         context['active_menu'] = 'Музыка'
         context['title'] = f'DND - {track.name}'
         context['extra_files'] = [

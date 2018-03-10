@@ -22,10 +22,18 @@
 {% block content %}
 <div class="ui stackable grid">
   <div class="ui row">
-    <div class="ui breadcrumb">
+    <div class="ui breadcrumb" style="width: 100%;">
       <a class="section" href="/music/#{{ track.slug }}">Музыка</a>
       <i class="right angle icon divider"></i>
       <div class="active section">{{ track.name }}</div>
+      <span style="float: right;" class="mobile-hidden">
+        {% if prev_track %}
+        <a href="/music/{{ prev_track.slug }}"><i class="icon angle left"></i>{{ prev_track.name }}</a>
+        {% endif %}
+        {% if next_track %}
+        <a href="/music/{{ next_track.slug }}" style="padding-left: 15px;">{{ next_track.name }}<i class="icon angle right"></i></a>
+        {% endif %}
+      </span>
     </div>
   </div>
   <div class="five wide column">
