@@ -1,14 +1,16 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-from apps.core.models import BaseModel
-from apps.users.models import User
 from autoslug import AutoSlugField
-from django.utils import timezone
+from adminsortable.models import SortableMixin
+
+from apps.core.models import BaseModel
 from apps.music.models import Track
+from apps.users.models import User
 
 
-class News(BaseModel):
+class News(SortableMixin, BaseModel):
     """Documentation"""
     is_active = models.BooleanField(
         default=True,
@@ -59,6 +61,11 @@ class News(BaseModel):
         related_name='news',
         verbose_name=_('Tracks'),
     )
+    order = models.PositiveIntegerField(
+        default=0,
+        editable=False,
+        db_index=True
+    )
 
     def __str__(self):
         return self.title
@@ -66,6 +73,7 @@ class News(BaseModel):
     class Meta:
         verbose_name = _('News')
         verbose_name_plural = _('News')
+        ordering = ('-order',)
 
     def increment_view(self):
         self.views += 1

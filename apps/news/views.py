@@ -1,7 +1,8 @@
-from django.views.generic.base import TemplateView
 from django.core.paginator import Paginator
-from .models import News
 from django.http import Http404
+from django.views.generic.base import TemplateView
+
+from .models import News
 
 
 class NewsView(TemplateView):
@@ -11,7 +12,8 @@ class NewsView(TemplateView):
 
     def _get_paginated_news(self, context, page_id):
         """Method to add pages info to context."""
-        all_news = News.objects.order_by('-created')
+        all_news = News.objects.all()
+
         if not all_news:
             return context
         p = Paginator(all_news, self.news_per_page)

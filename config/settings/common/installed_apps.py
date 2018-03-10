@@ -7,6 +7,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'storages',
+    'adminsortable',
+    'django_object_actions',
 ]
 
 LOCAL_APPS = [

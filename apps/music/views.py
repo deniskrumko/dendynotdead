@@ -1,7 +1,7 @@
-from django.views.generic.base import TemplateView
 from django.http import Http404
+from django.views.generic.base import TemplateView
 
-from .models import Track, File
+from .models import File, Track
 
 
 class TrackListView(TemplateView):

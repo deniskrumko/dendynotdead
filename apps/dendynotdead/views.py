@@ -12,7 +12,7 @@ class IndexView(TemplateView):
         return {
             'active_menu': 'Главная',
             'tracks': Track.objects.filter(is_active=True)[0:5],
-            'news': News.objects.order_by('-created')[0:3],
+            'news': News.objects.all()[0:3],
             'title': 'Dendy Not Dead - Главная'
         }
 

@@ -1,7 +1,10 @@
-from apps.core.models import BaseModel
-from django.utils.translation import ugettext_lazy as _
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
+from adminsortable.models import SortableMixin
 from autoslug import AutoSlugField
+
+from apps.core.models import BaseModel
 
 
 class File(BaseModel):
@@ -53,7 +56,7 @@ class File(BaseModel):
         verbose_name_plural = _('Files')
 
 
-class Track(BaseModel):
+class Track(SortableMixin, BaseModel):
     """Model for storing track's information.
 
     Attributes:
@@ -110,6 +113,11 @@ class Track(BaseModel):
         blank=True,
         verbose_name=_('Description'),
     )
+    order = models.PositiveIntegerField(
+        default=0,
+        editable=False,
+        db_index=True
+    )
 
     def __str__(self):
         return self.name
@@ -117,7 +125,13 @@ class Track(BaseModel):
     class Meta:
         verbose_name = _('Track')
         verbose_name_plural = _('Tracks')
-        ordering = ('-created',)
+        ordering = ('-order',)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.order = 0
+
+        super().save(*args, **kwargs)
 
 
 class TrackFile(models.Model):
