@@ -18,6 +18,7 @@ class File(BaseModel):
     """
     CATEGORIES = (
         ('music', 'Music'),
+        ('demo', 'Demo'),
         ('gtp', 'Guitar PRO'),
         ('text', 'Text'),
         ('video', 'Video'),
