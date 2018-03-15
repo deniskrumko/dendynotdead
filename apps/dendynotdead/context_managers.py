@@ -1,3 +1,5 @@
+from django.conf import settings
+
 
 def menu(request):
     return {
@@ -35,5 +37,6 @@ def menu(request):
             ('Новости', '/news/'),
             ('Музыка', '/music/'),
             ('О проекте', '/about/'),
-        )
+        ),
+        'website_url': settings.WEBSITE_URL,
     }

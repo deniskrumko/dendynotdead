@@ -20,3 +20,5 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 # Shell plus pre imports
 SHELL_PLUS_PRE_IMPORTS = [('{}.factories'.format(app), '*')
                           for app in INSTALLED_APPS]  # noqa
+
+WEBSITE_URL = 'http://127.0.0.1:8000/'
