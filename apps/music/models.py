@@ -35,6 +35,10 @@ class File(BaseModel):
         upload_to=BaseModel.file_upload_path,
         verbose_name=_('File')
     )
+    obfuscate_filename = models.BooleanField(
+        default=True,
+        verbose_name=_('Obfuscate filename'),
+    )
     category = models.CharField(
         max_length=255,
         null=True,
