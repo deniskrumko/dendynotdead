@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
-from .models import News
+
 from adminsortable.admin import SortableAdmin
+
+from .models import News
 
 
 @admin.register(News)

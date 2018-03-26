@@ -2,8 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-from autoslug import AutoSlugField
 from adminsortable.models import SortableMixin
+from autoslug import AutoSlugField
 
 from apps.core.models import BaseModel
 from apps.music.models import Track

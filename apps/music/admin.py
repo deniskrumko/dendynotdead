@@ -1,7 +1,8 @@
 from django.contrib import admin
+from django.http.response import HttpResponseRedirect
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
-from django.http.response import HttpResponseRedirect
+
 from adminsortable.admin import SortableAdmin
 from django_object_actions import (
     DjangoObjectActions,
