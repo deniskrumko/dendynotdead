@@ -7,14 +7,14 @@ from apps.news.models import News
 
 class IndexView(TemplateView):
     template_name = 'index.html'
+    active_menu = 'Главная'
+    title = 'Dendy Not Dead - Главная'
 
     def get_context_data(self, **kwargs):
-        return {
-            'active_menu': 'Главная',
-            'tracks': Track.objects.filter(is_active=True)[0:5],
-            'news': News.objects.all()[0:3],
-            'title': 'Dendy Not Dead - Главная'
-        }
+        context_data = super().get_context_data(**kwargs)
+        context_data['tracks'] = Track.objects.filter(is_active=True)[0:5]
+        context_data['news'] = News.objects.all()[0:3]
+        return context_data
 
 
 def handler404(request):

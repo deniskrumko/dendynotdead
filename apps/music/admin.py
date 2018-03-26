@@ -20,6 +20,7 @@ class TrackFileInline(admin.TabularInline):
 
 @admin.register(Track)
 class TrackAdmin(DjangoObjectActions, SortableAdmin):
+    """Admin class for ``Track`` model."""
     sortable_change_list_with_sort_link_template = (
         'django_object_actions/change_list.html'
     )
@@ -76,6 +77,7 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
 
     @takes_instance_or_queryset
     def reset_slug(self, request, qs):
+        """Action to reset `slug` field for ``Track`` objects."""
         for obj in qs:
             obj.slug = None
             obj.save()
@@ -83,6 +85,13 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
     reset_slug.label = _('Reset slug')
 
     def sort_objects(self, request, queryset):
+        """Action to redirect to sorting page.
+
+        This fix is needed to make ``DjangoObjectActions`` and
+        ``SortableAdmin`` classes to work together with template from first
+        class.
+
+        """
         return HttpResponseRedirect('/admin/music/track/sort/')
 
     sort_objects.label = _('Sort objects')
