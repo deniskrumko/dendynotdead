@@ -1,0 +1,111 @@
+#header {
+  background: none !important;
+  height: 95px !important;
+}
+
+#user-tools {
+  color: #333 !important;
+  margin: 25px 0 0 20px !important;
+  font-weight: 400 !important;
+  font-family: 'Roboto Slab', serif !important;
+  font-size: 12px !important;
+}
+
+#header a:link, #header a:visited {
+  color: black !important;
+  font-weight: 700 !important;
+}
+
+.logo2-line {
+  /* 67 char x logo-pixel width */
+  width: 536px;
+}
+
+.logo-pixel {
+  width: 8px;
+  height: 8px;
+  float: left;
+  transition: all 0.3s ease;
+}
+
+.pixel-logo {
+  position: absolute;
+  margin-top: 35px;
+}
+
+.black {
+  background: black;
+}
+
+.white {
+  background: white;
+}
+
+.red {
+  background: #df1e1e;
+}
+
+div.breadcrumbs {
+    background: #f6f6f6 !important;
+    color: #333 !important;
+    font-weight: 700 !important;
+    font-family: 'Roboto Slab', serif !important;
+}
+
+div.breadcrumbs a {
+    color: #777 !important;
+    font-weight: 400 !important;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: #f8f8f8 !important;
+    color: #333 !important;
+    font-family: 'Roboto Slab', serif !important;
+    font-size: 14px !important;
+    border-radius: 5px;
+}
+
+a.section:link, a.section:visited {
+    color: #575757 !important;
+    font-family: 'Roboto Slab', serif !important;
+}
+
+a:link, a:visited {
+    color: #4183C4 !important;
+    font-family: 'Roboto Slab', serif !important;
+}
+
+th {
+  font-weight: 400 !important;
+}
+
+thead th {
+  background: #fbfbfb !important;
+}
+
+table thead th .text a {
+    font-weight: 700 !important;
+}
+
+.object-tools a:link, .object-tools a:visited {
+  background: #f3f3f3 !important;
+  transition: all 0.3s ease;
+}
+
+.object-tools a:focus, .object-tools a:hover {
+  background: #eee !important;
+}
+
+#content-related {
+  border-radius: 5px;
+}
+
+.submit-row a.deletelink {
+    display: block;
+    background: #d70000 !important;
+    border-radius: 4px;
+    padding: 10px 15px;
+    height: 15px;
+    line-height: 15px;
+    color: #fff !important;
+}

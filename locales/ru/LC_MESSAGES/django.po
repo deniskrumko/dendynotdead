@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-29 17:36+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+msgid "Main"
+msgstr "Основное"
+
+msgid "Created/Modified"
+msgstr "Создано/Изменено"
+
+msgid "About"
+msgstr "О проекте"
+
+msgid "title"
+msgstr "Заголовок"
+
+msgid "Slug"
+msgstr "Слаг"
+
+msgid "description"
+msgstr "Описание"
+
+msgid "Info"
+msgstr "Информация"
+
+msgid "Core"
+msgstr "Ядро"
+
+msgid "Dendy Not Dead"
+msgstr "Dendy Not Dead"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Image"
+msgstr "Изображение"
+
+msgid "Created/Updated"
+msgstr "Создано/Изменено"
+
+msgid "Reset slug"
+msgstr "Сбросить слаг"
+
+msgid "Sort objects"
+msgstr "Упорядочить"
+
+msgid "Image preview"
+msgstr "Превью"
+
+msgid "Music"
+msgstr "Музыка"
+
+msgid "Name"
+msgstr "Название"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Obfuscate filename"
+msgstr "Обфусцировать название файла?"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Files"
+msgstr "Файлы"
+
+msgid "Is active"
+msgstr "Активен"
+
+msgid "Year"
+msgstr "Год"
+
+msgid "Preview"
+msgstr "Превью"
+
+msgid "Track"
+msgstr "Трек"
+
+msgid "Tracks"
+msgstr "Треки"
+
+msgid "Sort order"
+msgstr "Порядок"
+
+msgid "Track File"
+msgstr "Файл трека"
+
+msgid "Track Files"
+msgstr "Файлы трека"
+
+msgid "News"
+msgstr "Новости"
+
+msgid "Author"
+msgstr "Автор"
+
+msgid "Title"
+msgstr "Заголовок"
+
+msgid "Full text"
+msgstr "Полный текст"
+
+msgid "Views"
+msgstr "Просмотры"
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "Users"
+msgstr "Пользователи"
+
+msgid "email address"
+msgstr "Электронная почта"
+
+msgid "User"
+msgstr "Пользователь"
+
+msgid "Подождите, у автора сейчас творческий кризис."
+msgstr "Подождите, у автора сейчас творческий кризис."
+
+msgid "Подождите, автор создает оригинальный контент."
+msgstr "Подождите, автор создает оригинальный контент."

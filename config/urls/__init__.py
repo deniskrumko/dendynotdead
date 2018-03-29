@@ -3,7 +3,10 @@ from django.contrib import admin
 from django.views.generic.base import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.utils.translation import ugettext_lazy as _
 
+admin.site.site_header = _('Dendy Not Dead')
+admin.site.site_title = _('DND')
 
 urlpatterns = [
     # Apps
