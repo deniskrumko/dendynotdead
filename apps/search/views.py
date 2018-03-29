@@ -1,10 +1,6 @@
-from django.views.generic.base import TemplateView
+from apps.core.views import BaseView
 
 
-class SearchView(TemplateView):
+class SearchView(BaseView):
     template_name = 'search/main.html'
-
-    def get_context_data(self, **kwargs):
-        return {
-            'active_menu': 'Поиск',
-        }
+    active_menu = 'Поиск'

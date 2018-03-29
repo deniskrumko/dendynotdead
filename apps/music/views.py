@@ -1,10 +1,11 @@
-from django.views.generic.base import TemplateView
 from django.shortcuts import get_object_or_404
-from .models import File, Track
+
 from apps.core.views import BaseView
 
+from .models import File, Track
 
-class TrackListView(TemplateView):
+
+class TrackListView(BaseView):
     """View to display list of tracks."""
     template_name = 'music/list.html'
     active_menu = 'Музыка'

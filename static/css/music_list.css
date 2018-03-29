@@ -1,8 +1,8 @@
 .header.track {
   font-family: 'Open Sans', cursive !important;
-  margin: auto;
   font-weight: 900 !important;
   line-height: 26px !important;
+  margin-top: -2px !important;
 }
 
 @media screen and (max-width: 650px){

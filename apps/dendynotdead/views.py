@@ -1,11 +1,11 @@
 from django.shortcuts import render_to_response
-from django.views.generic.base import TemplateView
 
+from apps.core.views import BaseView
 from apps.music.models import Track
 from apps.news.models import News
 
 
-class IndexView(TemplateView):
+class IndexView(BaseView):
     template_name = 'index.html'
     active_menu = 'Главная'
     title = 'Dendy Not Dead - Главная'

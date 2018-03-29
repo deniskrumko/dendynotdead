@@ -1,7 +1,10 @@
-from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage, Paginator
+from django.http.response import Http404
 from django.shortcuts import get_object_or_404
-from .models import News
+
 from apps.core.views import BaseView
+
+from .models import News
 
 
 class NewsView(BaseView):
@@ -25,7 +28,11 @@ class NewsView(BaseView):
             return context_data
 
         p = Paginator(News.objects.all(), self.news_per_page)
-        current_page = p.page(page)
+        try:
+            current_page = p.page(page)
+        except EmptyPage:
+            raise Http404('Page not found')
+
         center_index = self.pagination_window // 2
 
         if p.num_pages < self.pagination_window:

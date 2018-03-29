@@ -1,9 +1,9 @@
-from django.views.generic.base import TemplateView
+from apps.core.views import BaseView
 
 from .models import AboutInfo
 
 
-class AboutView(TemplateView):
+class AboutView(BaseView):
     template_name = 'about/main.html'
     active_menu = 'О проекте'
     title = 'Dendy Not Dead - О проекте'

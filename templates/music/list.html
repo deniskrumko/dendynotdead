@@ -11,9 +11,6 @@
 {# JS #}
 {% block extrajs %}
 {{ block.super }}
-<script type="text/javascript">
-  var heyhey = '123';
-</script>
 <script src="{% static 'js/audiojs/audio.min.js' %}"></script>
 <script src="{% static 'js/music.js' %}"></script>
 {% endblock %}
@@ -29,19 +26,43 @@
   <br><br>
   <div class="ui large active centered inline loader"></div>
 {% else %}
-
 <div class="audio">
   <audio preload></audio>
 </div>
 
 <div class="ui two column stackable grid">
   <div class="eleven wide column">
-    <div class="ui info message">
-      <ul class="list">
-        <p><i class="play icon"></i> Нажмите на <b>картинку</b> или <b>название песни</b> для воспроизведения</p>
-        <p><i class="write icon"></i>Нажмите <b>показать полностью</b> для просмотра истории трека и дополнительных файлов (табулатуры, записи с диктофона, старые версии)</p>
-        <p><i class="sound icon"></i>Рекомендуется к прослушиванию в <b>наушниках</b></p>
-      </ul>
+    <div class="">
+      <h2>Музыка</h2>
+      <div class="ui list">
+        <div class="item">
+          <i class="play icon"></i>
+          <div class="content">
+            <div class="header">
+              Воспроизведение
+            </div>
+            <div class="description">Нажмите на <u>картинку</u> или <u>название трека</u> для воспроизведения</div>
+          </div>
+        </div>
+        <div class="item">
+          <i class="write icon"></i>
+          <div class="content">
+            <div class="header">
+              Информация
+            </div>
+            <div class="description">Нажмите <u>показать полностью</u> для просмотра истории трека и дополнительных файлов (табулатуры, записи с диктофона, старые версии)</div>
+          </div>
+        </div>
+        <div class="item">
+          <i class="sound icon"></i>
+          <div class="content">
+            <div class="header">
+              Прослушивание
+            </div>
+            <div class="description">Рекомендуется к прослушиванию в <u>наушниках</u></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="ui items unstackable" id="example1">
     {% for track in tracks %}
@@ -57,9 +78,11 @@
       </div>
       <div class="content">
         <a class="header track" href="#" data-src="{{ track.file.url }}">{{ track.name }}</a>
+        {% if track.year %}
         <div class="meta">
           <span>{{ track.year }}</span>
         </div>
+        {% endif %}
         <div class="description mobile-hidden">
           {% if track.preview %}
             {% autoescape off %}
@@ -99,7 +122,9 @@
       <div class="all-songs">
         {% for track in tracks %}
         <p class="name"><a href="#{{ track.slug }}" class="item">{{ track.name }}</a></p>
+        {% if track.year %}
         <p class="year">{{ track.year }}</p>
+        {% endif %}
         {% endfor %}
       </div>
       <br>

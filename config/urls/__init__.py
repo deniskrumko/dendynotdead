@@ -6,12 +6,17 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    # Apps
     url('', include('apps.dendynotdead.urls')),
     url(r'^news/', include('apps.news.urls')),
     url(r'^music/', include('apps.music.urls')),
     url(r'^about/', include('apps.about.urls')),
     url(r'^search/', include('apps.search.urls')),
+
+    # Admin UI
     url(r'^admin/', admin.site.urls),
+
+    # Testing views
     url(r'^test/404/', TemplateView.as_view(template_name='errors/404.html')),
     url(r'^test/500/', TemplateView.as_view(template_name='errors/500.html'))
 ]
