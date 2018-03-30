@@ -139,9 +139,8 @@ table thead th .text a {
 }
 
 #changelist .actions .button {
-    font-size: 13px;
     border: none !important;
-    border-radius: 8px;
+    border-radius: 4px !important;
     background: #f3f3f3 !important;
     box-shadow: none !important;
     cursor: pointer;
@@ -149,8 +148,12 @@ table thead th .text a {
     line-height: 1;
     padding: 4px 12px !important;
     margin-top: -2px !important;
-    color: #333;
     font-family: 'Roboto Slab', serif !important;
+    transition: all 0.3s ease;
+}
+
+#changelist .actions .button:hover {
+  background: #eee !important;
 }
 
 table thead th .text a:focus, table thead th .text a {
@@ -159,4 +162,19 @@ table thead th .text a:focus, table thead th .text a {
 
 ul.messagelist li.warning {
   border-radius: 20px;
+}
+
+.object-tools a.addlink {
+  background-color: #df1e1e !important;
+  color: white !important;
+  padding-right: 12px !important;
+  transition: all 0.3s ease;
+}
+
+.object-tools a.addlink:hover {
+  background-color: #f82525 !important;
+}
+
+#changelist table tbody tr.selected {
+  transition: all 0.7s ease;
 }

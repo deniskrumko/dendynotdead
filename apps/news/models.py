@@ -64,7 +64,8 @@ class News(SortableMixin, BaseModel):
     order = models.PositiveIntegerField(
         default=0,
         editable=False,
-        db_index=True
+        db_index=True,
+        verbose_name=_('Order'),
     )
 
     def __str__(self):

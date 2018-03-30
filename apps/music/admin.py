@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.http.response import HttpResponseRedirect
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+from apps.core.admin import small_preview, large_preview
 
 from adminsortable.admin import SortableAdmin
 from django_object_actions import (
@@ -9,6 +9,7 @@ from django_object_actions import (
     takes_instance_or_queryset,
 )
 
+from .forms import TrackForm
 from .models import File, Track, TrackFile
 
 
@@ -24,6 +25,7 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
     sortable_change_list_with_sort_link_template = (
         'django_object_actions/change_list.html'
     )
+    form = TrackForm
     fieldsets = (
         (_('Main'), {
             'fields': (
@@ -43,7 +45,7 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
         (_('Image'), {
             'fields': (
                 'image',
-                '_large_image',
+                '_large_preview',
             )
         }),
         (_('Created/Updated'), {
@@ -56,7 +58,7 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
     list_display = (
         'name',
         'year',
-        '_image',
+        '_small_preview',
         'slug',
         'order',
     )
@@ -64,7 +66,8 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
         'slug',
         'created',
         'modified',
-        '_large_image',
+        '_small_preview',
+        '_large_preview',
     )
     inlines = (TrackFileInline,)
     change_actions = (
@@ -96,19 +99,15 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
 
     sort_objects.label = _('Sort objects')
 
-    def _image(self, obj):
-        return mark_safe(
-            f'<img src="{obj.image.url}" class="small-preview">'
-        ) if obj.image else '-'
+    def _small_preview(self, obj):
+        return small_preview(obj)
 
-    _image.short_description = _('Image preview')
+    _small_preview.short_description = _('Image preview')
 
-    def _large_image(self, obj):
-        return mark_safe(
-            f'<img src="{obj.image.url}" class="large-preview">'
-        ) if obj.image else '-'
+    def _large_preview(self, obj):
+        return large_preview(obj)
 
-    _large_image.short_description = _('Image preview')
+    _large_preview.short_description = _('Image preview')
 
 
 @admin.register(File)

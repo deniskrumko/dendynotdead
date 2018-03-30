@@ -9,6 +9,7 @@ INSTALLED_APPS = [
     'storages',
     'adminsortable',
     'django_object_actions',
+    'ckeditor',
 ]
 
 LOCAL_APPS = [
