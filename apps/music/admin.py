@@ -98,14 +98,14 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
 
     def _image(self, obj):
         return mark_safe(
-            f'<img src="{obj.image.url}" style="height: 28px;">'
+            f'<img src="{obj.image.url}" class="small-preview">'
         ) if obj.image else '-'
 
     _image.short_description = _('Image preview')
 
     def _large_image(self, obj):
         return mark_safe(
-            f'<img src="{obj.image.url}" style="height: 128px;">'
+            f'<img src="{obj.image.url}" class="large-preview">'
         ) if obj.image else '-'
 
     _large_image.short_description = _('Image preview')
