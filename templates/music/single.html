@@ -44,7 +44,7 @@
   {% endif %}
   </div>
   <div class="eleven wide column">
-    <h1>{{ track.name }}</h1>
+    <h1 style="font-family: 'Open Sans', cursive !important;">{{ track.name }}</h1>
     <p>{{ track.year }}</p>
     {% autoescape off %}
       <p>{{ track.description }}</p>
@@ -83,8 +83,19 @@
 
     {% endif %}
     <br>
-    <p class="text-faded">Добавлено на сайт: {{ track.created }}</p>
-      <p class="text-faded">Изменено последний раз: {{ track.updated }}</p>
+
+    <div class="mobile-show" style="margin: auto; text-align: center; padding-bottom: 30px;">
+      {% if prev_track %}
+      <a href="/music/{{ prev_track.slug }}" class="ui button"><i class="icon angle left"></i>Пред. трек</a>
+      {% endif %}
+      {% if next_track %}
+      <a href="/music/{{ next_track.slug }}" class="ui button" style="padding-left: 15px;">След. трек<i class="icon angle right"></i></a>
+      {% endif %}
+      <br>
+      <a href="/music/" class="ui basic button" style="margin-top: 10px;"><i class="play icon"></i>Посмотреть все треки</a>
+    </div>
+    <p class="text-faded" style="font-size: 12px;">Добавлено на сайт: {{ track.created }}</p>
+    <p class="text-faded" style="font-size: 12px;">Изменено последний раз: {{ track.modified }}</p>
     <br>
 
     {% comment %}
