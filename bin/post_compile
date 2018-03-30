@@ -28,6 +28,12 @@ if [ ! -d $TARGET_DIR/gettext ]; then
     echo "-----> done installing gettext msgfmt"
 fi
 
+if [ -f bin/compile_messages ]; then
+    echo "-----> Running compile_messages"
+    chmod +x bin/compile_messages
+    bin/compile_messages
+fi
+
 if [ -f bin/run_migrations ]; then
     echo "-----> Running run_migrations"
     chmod +x bin/run_migrations
