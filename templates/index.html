@@ -88,12 +88,14 @@
     <div class="ui divided unstackable items">
       {% for n in news %}
       <div class="item">
-        <div class="ui mini image">
-          {% if n.image %}
-          <img src="{{ n.image.url }}">
-          {% else %}
-          <img src="{% static 'images/no-image.png' %}" alt="">
-          {% endif %}
+        <div class="ui mini image scale-image">
+          <a href="/news/{{ n.slug }}">
+            {% if n.image %}
+            <img src="{{ n.image.url }}">
+            {% else %}
+            <img src="{% static 'images/no-image.png' %}" alt="">
+            {% endif %}
+          </a>
         </div>
         <div class="middle aligned content">
           <div class="header">

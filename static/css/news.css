@@ -29,3 +29,7 @@
 .disabled-icon:hover {
   color: #dedede;
 }
+
+.clicks {
+  margin-left: 5px;
+}

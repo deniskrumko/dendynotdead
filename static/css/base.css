@@ -155,3 +155,11 @@ a.anchor2 {
     min-height: 136px !important;
   }
 }
+
+.scale-image {
+  transition: all 0.1s ease;
+}
+
+.scale-image:hover {
+  transform: scale(1.1);
+}
