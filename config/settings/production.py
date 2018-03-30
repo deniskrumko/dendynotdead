@@ -6,7 +6,7 @@ from .common import *  # noqa
 
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
