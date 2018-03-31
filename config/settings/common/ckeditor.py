@@ -14,6 +14,7 @@ CKEDITOR_CONFIGS = {
                 '-',
                 'Outdent',
                 'Indent',
+                'Iframe',
                 '-',
                 'JustifyLeft',
                 'JustifyCenter',
@@ -23,7 +24,10 @@ CKEDITOR_CONFIGS = {
             ['Link', 'Unlink', 'Image'],
             ['TextColor', 'BGColor'],
             ['RemoveFormat', 'Source']
-        ]
+        ],
+        'extraPlugins': ','.join([
+            'iframe'
+        ]),
     },
     'preview': {
         'toolbar': 'Custom',
