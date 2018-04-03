@@ -42,6 +42,13 @@
   {% else %}
     <img class="ui medium centered image" src="{% static 'images/no-image.png' %}">
   {% endif %}
+  {% if request.user.is_superuser %}
+  <br>
+  <a href="{% url 'admin:music_track_change' track.id %}">
+    <i class="pencil icon"></i>
+    Редактировать трек
+  </a>
+  {% endif %}
   </div>
   <div class="eleven wide column">
     <h1 style="font-family: 'Open Sans', cursive !important;">{{ track.name }}</h1>

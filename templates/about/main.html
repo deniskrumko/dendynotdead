@@ -19,12 +19,20 @@
     <p>И так, <b>Dendy Not Dead</b> — это, громко говоря, мой музыкальный проект,
     где я пытаюсь воплотить все свои музыкальные наработки в более менее
     нормальные треки.
-
+    {% if request.user.is_superuser %}
+    <br><br>
+    <a href="{% url 'admin:about_aboutinfo_changelist' %}">Редактировать информацию</a>
+    <br><br>
+    {% endif %}
     </p>
     <img src="{% static 'images/dnd.jpg'%}" alt="" class="ui image corners">
 
     {% for obj in info %}
-      <h2 class="ui horizontal divider header">{{ obj.title }}</h2>
+      <h2 class="ui horizontal divider header">{{ obj.title }}
+        {% if request.user.is_superuser %}
+        <a href="{% url 'admin:about_aboutinfo_change' obj.id %}"><i style="font-size: 14px;" class="pencil icon"></i></a>
+        {% endif %}
+      </h2>
       <a id="{{ obj.slug }}" class="anchor2"></a>
       {% autoescape off %}
         {{ obj.description }}

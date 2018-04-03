@@ -31,13 +31,20 @@
     </div>
   </div>
   <div class="five wide column">
-  {% if news.image %}
-  <img class="ui fluid image" src="{{ news.image.url }}">
-  {% else %}
-    <img class="ui medium centered image" src="{% static 'images/corgi-cool.jpg' %}">
+    {% if news.image %}
+    <img class="ui fluid image" src="{{ news.image.url }}">
+    {% else %}
+      <img class="ui medium centered image" src="{% static 'images/corgi-cool.jpg' %}">
+      <br>
+      <p class="text-center text-faded">Sorry, but there is no image. Woof.</p>
+    {% endif %}
+    {% if request.user.is_superuser %}
     <br>
-    <p class="text-center text-faded">Sorry, but there is no image. Woof.</p>
-  {% endif %}
+    <a href="{% url 'admin:news_news_change' news.id %}">
+      <i class="pencil icon"></i>
+      Редактировать новость
+    </a>
+    {% endif %}
   </div>
   <div class="eleven wide column">
     <h1>{{ news.title }}</h1>

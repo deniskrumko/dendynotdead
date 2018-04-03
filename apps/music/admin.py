@@ -74,9 +74,11 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
     inlines = (TrackFileInline,)
     change_actions = (
         'reset_slug',
+        'on_site',
     )
     changelist_actions = (
         'reset_slug',
+        'on_site',
         'sort_objects',
     )
 
@@ -88,6 +90,17 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
             obj.save()
 
     reset_slug.label = _('Reset slug')
+
+    @takes_instance_or_queryset
+    def on_site(self, request, qs=None):
+        """Method to view tracks or one track on site."""
+        if qs.count() > 1:
+            return HttpResponseRedirect('/music/')
+
+        track = qs.first()
+        return HttpResponseRedirect(f'/music/{track.slug}/')
+
+    on_site.label = _('View on site')
 
     def sort_objects(self, request, queryset):
         """Action to redirect to sorting page.
