@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta property="og:image" content="{{ website_url}}static/images/dnd-meta.jpg"/>
-    <meta name="description" content="Небольшой музыкальный проект Дениса Крумко" />
+    <meta name="description" content="Dendy Not Dead — это музыкальный проект Дениса Крумко. Сам проект является собранием инструментальной рок музыки, составленной полностью в программе Guitar Pro, без записи живых инструментов. Проект создан для удобного хранения собственных музыкальных идей и не представляет из себя настоящую музыку." />
     <title>{{ title }}</title>
     <link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}">
@@ -21,7 +21,9 @@
     {% block extrajs %}{% endblock %}
   </head>
   <body>
-  {% block body %}
-  {% endblock %}
+    {# Just for SEO #}
+    <h1 style="display:none;">Dendy Not Dead</h1>
+    {% block body %}
+    {% endblock %}
   </body>
 </html>

@@ -1,7 +1,8 @@
 from django import forms
 
-from .models import AboutInfo
 from ckeditor.widgets import CKEditorWidget
+
+from .models import AboutInfo
 
 
 class AboutInfoForm(forms.ModelForm):

@@ -4,6 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from adminsortable.models import SortableMixin
 from autoslug import AutoSlugField
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill, ResizeToFit
 
 from apps.core.models import BaseModel
 from apps.music.models import Track
@@ -45,10 +47,21 @@ class News(SortableMixin, BaseModel):
         blank=True,
         verbose_name=_('Full text'),
     )
-    image = models.ImageField(
+    image = ProcessedImageField(
         null=True,
         blank=True,
+        processors=[ResizeToFit(800, 800)],
+        format='JPEG',
+        options={'quality': 100},
+        upload_to=BaseModel.file_upload_path,
         verbose_name=_('Image'),
+    )
+    image_thumbnail = ProcessedImageField(
+        null=True,
+        blank=True,
+        processors=[ResizeToFill(100, 100)],
+        format='JPEG',
+        options={'quality': 90},
         upload_to=BaseModel.file_upload_path
     )
     views = models.PositiveIntegerField(

@@ -1,7 +1,8 @@
 from django import forms
 
-from .models import News
 from ckeditor.widgets import CKEditorWidget
+
+from .models import News
 
 
 class NewsForm(forms.ModelForm):

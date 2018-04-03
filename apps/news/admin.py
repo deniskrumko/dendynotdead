@@ -3,9 +3,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from adminsortable.admin import SortableAdmin
 
-from .models import News
+from apps.core.admin import image_preview
+
 from .forms import NewsForm
-from apps.core.admin import small_preview, large_preview
+from .models import News
 
 
 @admin.register(News)
@@ -32,6 +33,7 @@ class NewsAdmin(SortableAdmin, admin.ModelAdmin):
         (_('Image'), {
             'fields': (
                 'image',
+                'image_thumbnail',
                 '_large_preview',
             )
         }),
@@ -67,11 +69,11 @@ class NewsAdmin(SortableAdmin, admin.ModelAdmin):
     )
 
     def _small_preview(self, obj):
-        return small_preview(obj)
+        return image_preview(obj, size='small', field='image_thumbnail')
 
     _small_preview.short_description = _('Image preview')
 
     def _large_preview(self, obj):
-        return large_preview(obj)
+        return image_preview(obj, size='large', field='image_thumbnail')
 
     _large_preview.short_description = _('Image preview')

@@ -10,6 +10,7 @@ INSTALLED_APPS = [
     'adminsortable',
     'django_object_actions',
     'ckeditor',
+    'imagekit',
 ]
 
 LOCAL_APPS = [

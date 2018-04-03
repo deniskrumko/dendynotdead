@@ -3,8 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from adminsortable.admin import SortableAdmin
 
-from .models import AboutInfo
 from .forms import AboutInfoForm
+from .models import AboutInfo
 
 
 @admin.register(AboutInfo)

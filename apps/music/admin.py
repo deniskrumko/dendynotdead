@@ -1,13 +1,14 @@
 from django.contrib import admin
 from django.http.response import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
-from apps.core.admin import small_preview, large_preview
 
 from adminsortable.admin import SortableAdmin
 from django_object_actions import (
     DjangoObjectActions,
     takes_instance_or_queryset,
 )
+
+from apps.core.admin import image_preview
 
 from .forms import TrackForm
 from .models import File, Track, TrackFile
@@ -100,12 +101,12 @@ class TrackAdmin(DjangoObjectActions, SortableAdmin):
     sort_objects.label = _('Sort objects')
 
     def _small_preview(self, obj):
-        return small_preview(obj)
+        return image_preview(obj, size='small', field='image_thumbnail')
 
     _small_preview.short_description = _('Image preview')
 
     def _large_preview(self, obj):
-        return large_preview(obj)
+        return image_preview(obj, size='large', field='image_thumbnail')
 
     _large_preview.short_description = _('Image preview')
 

@@ -1,13 +1,10 @@
 from django.utils.safestring import mark_safe
 
 
-def small_preview(obj):
-    return mark_safe(
-        f'<img src="{obj.image.url}" class="small-preview">'
-    ) if obj.image else '-'
+def image_preview(obj, size, field='image',):
+    assert size in ('small', 'large')
 
-
-def large_preview(obj):
+    image_field = getattr(obj, field)
     return mark_safe(
-        f'<img src="{obj.image.url}" class="large-preview">'
-    ) if obj.image else '-'
+        f'<img src="{image_field.url}" class="{size}-preview">'
+    ) if image_field else '-'

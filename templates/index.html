@@ -59,8 +59,8 @@
       {% for track in tracks %}
         <div class="column track" style="padding: 5px;" data-name="{{ track.name }}">
           <a href="/music/{{ track.slug }}">
-          {% if track.image %}
-          <img class="ui image corners" src="{{ track.image.url }}">
+          {% if track.image_thumbnail %}
+          <img class="ui image corners" src="{{ track.image_thumbnail.url }}">
           {% else %}
           <img class="ui image corners" src="{% static 'images/no-image.png' %}" alt="">
           {% endif %}
@@ -90,8 +90,8 @@
       <div class="item">
         <div class="ui mini image scale-image">
           <a href="/news/{{ n.slug }}">
-            {% if n.image %}
-            <img src="{{ n.image.url }}">
+            {% if n.image_thumbnail %}
+            <img src="{{ n.image_thumbnail.url }}">
             {% else %}
             <img src="{% static 'images/no-image.png' %}" alt="">
             {% endif %}
