@@ -6,13 +6,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="Небольшой музыкальный проект Дениса Крумко" />
-    <meta http-equiv="refresh" content="0; URL='http://dendynotdead.herokuapp.com/'" />
+    <meta http-equiv="refresh1" content="0; URL='http://dendynotdead.herokuapp.com/'" />
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <title>Dendy Not Dead - Redirect</title>
   </head>
   <body>
-    <h1 style="font-family: sans-serif; text-align: center;">Dendy Not Dead</h1>
-    <p style="font-family: sans-serif; text-align: center;">
-      <b>Сайт загружается...</b>
-    </p>
+      <div class="pixel-logo">
+        <div class="logo-line">
+          <div class="logo-pixel"></div>
+          <div class="logo-pixel red animated" id="p1"></div>
+          <div class="logo-pixel"></div>
+          <div class="logo-pixel red animated" id="p2"></div>
+          <div class="logo-pixel"></div>
+        </div>
+        <div class="logo-line">
+          <div class="logo-pixel"></div>
+          <div class="logo-pixel"></div>
+          <div class="logo-pixel"></div>
+          <div class="logo-pixel"></div>
+          <div class="logo-pixel"></div>
+        </div>
+        <div class="logo-line">
+          <div class="logo-pixel"></div>
+          <div class="logo-pixel black animated" id="p4"></div>
+          <div class="logo-pixel"></div>
+          <div class="logo-pixel black animated" id="p3"></div>
+          <div class="logo-pixel"></div>
+        </div>
+        <div class="description">
+          <h1>Dendy Not Dead</h1>
+        </div>
+      </div>
+    <style media="screen">
+      .pixel-logo {
+        display: inline-block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        margin: auto;
+      }
+      .logo-line {
+        /* 5 char x logo-pixel width */
+        width: 200px;
+      }
+      .black {
+        background: black;
+      }
+      .red {
+        background: red;
+      }
+      .logo-pixel {
+        width: 40px;
+        height: 40px;
+        float: left;
+        transition: all 0.3s ease;
+      }
+      .description {
+        padding-top: 130px;
+      }
+      .description h1 {
+        font-size: 35px;
+        font-family: 'Amatic SC', cursive;
+        text-align: center;
+        text-transform: lowercase;
+      }
+      .animated {
+        -webkit-animation: move 3s infinite; /* Safari 4+ */
+        -moz-animation:    move 3s infinite; /* Fx 5+ */
+        -o-animation:      move 3s infinite; /* Opera 12+ */
+        animation:         move 3s infinite; /* IE 10+, Fx 29+ */
+      }
+      #p2 {
+        animation-delay: 0.75s;
+      }
+      #p3 {
+        animation-delay: 1.5s;
+      }
+      #p4 {
+        animation-delay: 2.25s;
+      }
+      @-webkit-keyframes move {
+        20%, 100% {
+          transform: rotate(90deg);
+        }
+      }
+      @-moz-keyframes move {
+        20%, 100% {
+          transform: rotate(90deg);
+        }
+      }
+      @-o-keyframes move {
+        20%, 100% {
+          transform: rotate(90deg);
+        }
+      }
+      @keyframes move {
+        20%, 100% {
+          transform: rotate(90deg);
+        }
+      }
+    </style>
   </body>
 </html>
