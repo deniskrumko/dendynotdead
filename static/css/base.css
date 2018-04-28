@@ -1,4 +1,9 @@
-
+.ui.button {
+  font-family: "PT Sans";
+}
+.wide {
+  width: 100% !important;
+}
 a.anchor {
     display: block;
     position: relative;
@@ -93,19 +98,6 @@ a.anchor2 {
     .mobile-show { display: none !important; }
 }
 
-.linky {
-  position: relative;
-  text-decoration: none;
-}
-
-.linky.big {
-  color: #000;
-}
-
-.linky.big:hover {
-  color: #000;
-}
-
 .linky.small {
   color: #4183c4;
 }
@@ -143,17 +135,6 @@ a.anchor2 {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
-}
-
-.index-all-tracks {
-  width: 100%;
-  height: 100%;
-}
-
-@media screen and (max-width: 650px){
-  .index-all-tracks {
-    min-height: 136px !important;
-  }
 }
 
 .scale-image {

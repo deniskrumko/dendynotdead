@@ -1,3 +1,65 @@
+/* Index main text */
+
+.index-text {
+  font-size: 16px;
+  text-align: justify;
+  font-family: "PT Sans" !important;
+}
+
+/* Index titles */
+
+.index-title {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+  font-family: "PT Sans" !important;
+}
+
+.index-title:hover {
+  color: #000;
+}
+
+.index-title:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  height: 3px;
+  bottom: -6px;
+  background-color: red;
+}
+
+.index-title:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+/* Author */
+
+.index-author {
+  float: right;
+  margin: 10px 15px;
+}
+.index-author img {
+  transition: all 0.3s ease;
+}
+.index-author a {
+  font-family: "PT Sans" !important;
+  color: #000000de;
+}
+.index-author:hover > img {
+  transform: scale(1.4) translateX(-5px);
+}
+.index-author:hover > a {
+  color: #1e70bf;
+}
+
 .track {
   transition: all 0.3s ease;
 }
@@ -5,4 +67,46 @@
 .track:hover {
   transform: translateY(-5px);
   filter: brightness(95%);
+}
+
+.show-all-tracks {
+  padding: 5px !important;
+
+}
+
+.show-all-tracks button {
+  width: 100%;
+  height: 100%;
+  font-family: "PT Sans" !important;
+  font-size: 14px !important;
+}
+
+@media screen and (max-width: 650px){
+  .show-all-tracks button {
+    min-height: 136px !important;
+  }
+}
+
+#index-track-name {
+  text-align: center;
+  font-family: "PT Sans" !important;
+  font-size: 14px !important;
+  color: #000000de !important;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+#index-track-name:hover {
+  color: #1e70bf !important;
+}
+
+.index-news {
+  font-family: "PT Sans" !important;
+}
+
+.index-news .content .header {
+  font-family: "PT Sans" !important;
+}
+
+.index-news .content .meta {
+  font-size: 12px !important;
 }

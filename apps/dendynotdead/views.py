@@ -12,7 +12,7 @@ class IndexView(BaseView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        context_data['tracks'] = Track.objects.filter(is_active=True)[0:5]
+        context_data['tracks'] = Track.objects.filter(is_active=True)[0:6]
         context_data['news'] = News.objects.all()[0:3]
         return context_data
 

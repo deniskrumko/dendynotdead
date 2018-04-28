@@ -1,20 +1,9 @@
-{% extends "base_template.html" %}
+{% extends "base.html" %}
 {% load static i18n %}
 
 {% block extrajs %}
 {{ block.super }}
-<script type="text/javascript">
-  $(document).ready(function() {
-    $(".track").hover(function () {
-      var name = $(this).data("name");
-      $("#track-name").text(name);
-      $("#track-name").css('opacity', 1);
-    },
-    function () {
-      $("#track-name").css('opacity', 0);
-    });
-  });
-</script>
+<script src="{% static 'js/index.js' %}" charset="utf-8"></script>
 {% endblock %}
 
 {% block extrastyle %}
@@ -25,9 +14,13 @@
 {% block content %}
 <div class="ui stackable grid">
 <div class="eleven wide column">
-  <div class="">
-    <h2><a href="/about" class="linky big">Добро пожаловать</a></h2>
-    <div style="font-size: 16px; text-align: justify;">
+  <div>
+    <h2>
+      <a href="/about" class="index-title">Добро пожаловать</a>
+    </h2>
+
+    {# Main index text #}
+    <div class="index-text">
       <p><b>Dendy Not Dead</b> — это мой маленький музыкальный проект, в котором
       я пытаюсь собрать все ритмы и мелодии, приходящие в мою голову, во что-то
       напоминающее музыку. Получается это плохо или не совсем — судить вам.</p>
@@ -35,59 +28,79 @@
       все треки сделаны в <b>Guitar Pro 6</b>, отсюда это искусственное звучание.
       Зато получается материализовывать свои идеи гораздо быстрее.</p>
       <p>Что новенького тут вышло можно посмотреть
-      в разделе <b><a href="/news">Новости</a></b>, все треки собраны в разделе
-      <b><a href="/music">Музыка</a></b>, а все подробности о том,
+      в разделе <b><a href="{% url 'news:index' %}">Новости</a></b>, все треки собраны в разделе
+      <b><a href="{% url 'music:index' %}">Музыка</a></b>, а все подробности о том,
       почему <b>Dendy</b> и почему же <b>Not Dead</b> — в разделе
-      <b><a href="/about">О проекте</a></b>. </p>
+      <b><a href="{% url 'about:index' %}">О проекте</a></b>. </p>
     </div>
-    <div class="" style="float: right; margin: 10px 25px;">
+
+    {# Author photo #}
+    <div class="index-author">
       <img class="ui avatar image" src="{% static 'images/me.jpg' %}">
-      <span>Денис Крумко</span>
+      <a href="{{ author_page }}" target="_blank">Денис Крумко</a>
     </div>
   </div>
 
   <br><br>
 
-  <div class="">
-    <h2><a href="/music" class="linky big">Музыка</a></h2>
+  {# MUSIC #}
+  {# ====================================================================== #}
+  <div>
+    <h2>
+      <a href="/music" class="index-title">Музыка</a>
+    </h2>
 
     {% if not tracks %}
       <p style="font-size: 16px;">Пока на сайт не загружено ни одного трека</p>
     {% else %}
-    <div class="ui grid" style="margin: 0px;">
-      <div class="doubling six column row">
+    <div class="ui grid mobile-hidden" style="margin: 0px;">
+      <div class="six column row">
+        {% for track in tracks %}
+          <div class="column track" style="padding: 5px;" data-name="{{ track.name }}">
+            <a href="{% url 'music:index'%}#{{ track.slug}}">
+            {% if track.image_thumbnail %}
+            <img class="ui image corners" src="{{ track.image_thumbnail.url }}">
+            {% else %}
+            <img class="ui image corners" src="{% static 'images/no-image.png' %}" alt="">
+            {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <a id="index-track-name" href="{% url 'music:index' %}">
+        Показать все треки
+      </a>
+    </div>
+    <div class="mobile-show">
       {% for track in tracks %}
-        <div class="column track" style="padding: 5px;" data-name="{{ track.name }}">
-          <a href="/music/{{ track.slug }}">
-          {% if track.image_thumbnail %}
-          <img class="ui image corners" src="{{ track.image_thumbnail.url }}">
-          {% else %}
-          <img class="ui image corners" src="{% static 'images/no-image.png' %}" alt="">
-          {% endif %}
-          </a>
+        <div class="column track" style="padding: 5px;">
+          <a href="{% url 'music:index'%}#{{ track.slug}}">
+            {% if track.image_thumbnail %}
+            <img class="ui image avatar" src="{{ track.image_thumbnail.url }}">
+            {% else %}
+            <img class="ui image avatar" src="{% static 'images/no-image.png' %}" alt="">
+            {% endif %}
+          {{ track.name }}
+        </a>
         </div>
       {% endfor %}
-      <div class="column track" style="padding: 5px;" data-name="Показать все треки">
-        <button class="ui button index-all-tracks" onclick="location.href='/music';">
-          Все треки
-        </button>
-      </div>
-      </div>
-      <p id="track-name" class="text-center" style="width: 100%; opacity: 0; transition: all 0.3s ease;">1</p>
+      <br>
+      <a href="{% url 'music:index'%}" class="ui button primary basic wide">Показать все треки</a>
     </div>
-
     {% endif %}
-
-
     <br>
   </div>
 </div>
+
+{# NEWS #}
+{# ====================================================================== #}
+
 <div class="five wide column">
   <div class="">
-    <h2><a href="/news" class="linky big">Новости</a></h2>
+    <h2><a href="/news" class="index-title">Новости</a></h2>
     <div class="ui divided unstackable items">
       {% for n in news %}
-      <div class="item">
+      <div class="item index-news">
         <div class="ui mini image scale-image">
           <a href="/news/{{ n.slug }}">
             {% if n.image_thumbnail %}
@@ -113,6 +126,8 @@
       </div>
       {% endfor %}
     </div>
+
+    {# ADMIN UI BUTTON #}
     {% if request.user.is_superuser %}
     <a href="/admin" class="ui primary button" style="width: 100%;">Admin UI</a>
     {% endif %}

@@ -10,11 +10,11 @@ admin.site.site_title = _('DND')
 
 urlpatterns = [
     # Apps
-    url('', include('apps.dendynotdead.urls')),
-    url(r'^news/', include('apps.news.urls')),
-    url(r'^music/', include('apps.music.urls')),
-    url(r'^about/', include('apps.about.urls')),
-    url(r'^search/', include('apps.search.urls')),
+    url('', include('apps.dendynotdead.urls', namespace='main')),
+    url(r'^news/', include('apps.news.urls', namespace='news')),
+    url(r'^music/', include('apps.music.urls', namespace='music')),
+    url(r'^about/', include('apps.about.urls', namespace='about')),
+    url(r'^search/', include('apps.search.urls', namespace='search')),
 
     # Admin UI
     url(r'^admin/', admin.site.urls),
