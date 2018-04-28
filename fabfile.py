@@ -2,18 +2,12 @@ from fabric.api import task, local
 
 
 def print_msg(msg):
-    """Print message in console.
+    """Print message in console."""
+    def green_msg(msg):
+        """Make message green color in console."""
+        return '\033[92m{0}\033[00m'.format(msg)
 
-    You need to install `termcolor` package to get colored messages.
-
-    """
-    formatted_msg = '\n{}\n'.format(msg)
-
-    try:
-        from termcolor import cprint
-        cprint(formatted_msg, 'green')
-    except ImportError:
-        print(formatted_msg)
+    print(green_msg('\n{}\n'.format(msg)))
 
 
 # MAIN COMMANDS
@@ -35,6 +29,19 @@ def run():
 def shell():
     """Run server."""
     return manage('shell_plus')
+
+
+# GIT
+# ============================================================================
+
+@task
+def push():
+    """Push changes to all servers."""
+    print_msg('1. Pushing to origin')
+    local('git push origin master')
+
+    print_msg('2. Pushing to Heroku')
+    local('git push heroku master')
 
 
 # LOCALES
@@ -116,3 +123,11 @@ def install_base_reqs():
     """Install base requirements."""
     print_msg('Installing base requirements')
     local('pip install -r requirements.txt')
+
+
+# HEROKU
+# ============================================================================
+
+@task
+def hlogs():
+    local('heroku logs --source app --tail')
