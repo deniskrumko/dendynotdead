@@ -4,6 +4,8 @@ Website for **Dendy Not Dead** music project.
 
 https://dendynotdead.herokuapp.com/
 
+![Preview](static/images/readme.jpg)
+
 ## Status
 
 Project is **archived** as it will be replaced with [this project](https://github.com/deniskrumko/deniskrumko)
