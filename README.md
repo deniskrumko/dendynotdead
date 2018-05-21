@@ -4,6 +4,10 @@ Website for **Dendy Not Dead** music project.
 
 https://dendynotdead.herokuapp.com/
 
+## Status
+
+Project is **archived** as it will be replaced with [this project](https://github.com/deniskrumko/deniskrumko)
+
 ## Stack
 
 * **Django 1.11** - Backend
