@@ -1,61 +1,91 @@
-<div class="ui secondary menu container" id="menu">
-  <div class="dnd-logo" onclick="location.href='/';">
-    <div class="pixel-logo">
-      {% for line in logo %}
-      <div class="logo-line">
-        {% for pixel in line %}
-        <div class="logo-pixel {% if pixel == '1' %}black{% elif pixel == '2' %}red{% endif %}"></div>
-        {% endfor %}
-      </div>
-      {% endfor %}
-    </div>
+<div class="ui secondary pointing menu mymenu {% if inverted %}inverted menu-noborder {% endif %}mobile-hidden-menu">
+  <div class="myicon">
+    <div class="square s-red"></div>
+    <div class="square s-red"></div>
+    <div style='clear:both'></div>
+    {% if inverted %}
+      <div class="square s-grey"></div>
+      <div class="square s-grey"></div>
+    {% else %}
+      <div class="square s-black"></div>
+      <div class="square s-black"></div>
+    {% endif %}
   </div>
-  <div class="right menu mobile-hidden-menu">
-
-    {% for item in menu %}
-    <a class="{% if item.0 == active_menu %}active {% endif %}item" href="{{ item.1 }}">{{ item.0}}</a>
-    {% endfor %}
-  </div>
-  <div class="right menu mobile-show-menu">
-    <div class="item toggle-menu">
-      <i class="content icon toggle-menu-icon"></i>
-    </div>
+  <a href="/" class="item">
+    Home
+  </a>
+  <a href="/news/1" class="item {% if menu_section == 'news' %}active{% endif%}">
+    News
+  </a>
+  <a href="/explore" class="item {% if menu_section == 'explore' %}active{% endif%}">
+    Explore
+  </a>
+  <a href="/wall" class="item {% if menu_section == 'wall' %}active{% endif%}">
+    The Wall
+  </a>
+  <div class="right menu">
+    <a href="/about" class="ui item {% if menu_section == 'about' %}active{% endif%}">
+      About
+    </a>
   </div>
 </div>
+<div class="ui secondary pointing menu mymenu {% if inverted %}inverted {% endif %}mobile-show-menu">
+  <div class="myicon">
+    <div class="square s-red"></div>
+    <div class="square s-red"></div>
+    <div style='clear:both'></div>
+    {% if inverted %}
+      <div class="square s-grey"></div>
+      <div class="square s-grey"></div>
+    {% else %}
+      <div class="square s-black"></div>
+      <div class="square s-black"></div>
+    {% endif %}
+  </div>
+  {% if menu_section == 'explore' %}
+    <a href="/explore/" class="item active">
+      Explore
+    </a>
+  {% endif %}
+  {% if menu_section == 'news' %}
+    <a href="/news/1/" class="item active">
+      News
+    </a>
+  {% endif %}
+  {% if menu_section == 'wall' %}
+    <a href="/wall/" class="item active">
+      The Wall
+    </a>
+  {% endif %}
+  {% if menu_section == 'about' %}
+    <a href="/wall/" class="item active">
+      About...
+    </a>
+  {% endif %}
+  <div class="right menu">
+    <div class="item">
+      <div class="ui down dropdown">
+        <i class="sidebar icon"></i>
+        <div class=" menu">
+          <a href="/" class="{% if menu_section == 'home' %}active noborder{% endif%} item">
+            <i class="home icon"></i>Home
+          </a>
+          <a href="/news" class="{% if menu_section == 'news' %}active noborder{% endif%} item">
+            <i class="newspaper icon"></i>News
+          </a>
+          <a href="/explore" class="{% if menu_section == 'explore' %}active noborder{% endif%} item">
+            <i class="music icon"></i>Explore
+          </a>
+          <a href="/wall" class="{% if menu_section == 'wall' %}active noborder{% endif%} item">
+            <i class="talk icon"></i>The Wall
+          </a>
+          <a href="/about" class="{% if menu_section == 'about' %}active noborder{% endif%} item">
+            <i class="help icon"></i>About
+          </a>
+        </div>
+      </div>
+</div>
 
-<div id="slim-menu" class="hide-slim-menu">
-  <div class="ui container">
-    <div class="dnd-logo mobile-hidden-menu" onclick="location.href='/';">
-      <div class="pixel2-logo">
-        {% for line in slim_logo %}
-        <div class="logo2-line">
-          {% for pixel in line %}
-          <div class="logo-pixel {% if pixel == '1' %}white{% elif pixel == '2' %}red{% endif %}"></div>
-          {% endfor %}
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="dnd-logo mobile-show-menu" onclick="location.href='/';">
-      <div class="pixel2-logo">
-        {% for line in slim_logo_mini %}
-        <div class="logo3-line">
-          {% for pixel in line %}
-          <div class="logo-pixel {% if pixel == '1' %}white{% elif pixel == '2' %}red{% endif %}"></div>
-          {% endfor %}
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="slim-right-menu mobile-hidden-menu">
-      {% for item in menu %}
-      <a class="{% if item.0 == active_menu %}active{% endif %}it" href="{{ item.1 }}">{{ item.0}}</a>
-      {% endfor %}
-    </div>
-    <div class="mobile-show-menu" style="float: right; margin: 14px 10px;">
-      <div class="item toggle-menu">
-        <i class="content icon inverted toggle-menu-icon"></i>
-      </div>
-    </div>
+
   </div>
 </div>

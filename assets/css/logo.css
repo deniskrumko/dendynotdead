@@ -1,0 +1,43 @@
+.square:hover {
+  transform: scale(1.7) rotate(90deg);
+  -moz-transition: -moz-transform ease 0.2s;
+  -webkit-transition: -webkit-transform ease 0.2s;
+  -o-transition: -o-transform ease 0.2s;
+  -ms-transition: -ms-transform ease 0.2s;
+  transition: transform ease 0.2s;
+}
+
+.square {
+	width: 10px;
+	height: 10px;
+  margin:4px;
+  float: left;
+  -moz-transition: -moz-transform ease 0.2s;
+  -webkit-transition: -webkit-transform ease 0.2s;
+  -o-transition: -o-transform ease 0.2s;
+  -ms-transition: -ms-transform ease 0.2s;
+  transition: transform ease 0.2s;
+}
+
+.s-red {
+	background: red;
+}
+
+.s-black {
+	background: black;
+}
+
+.s-grey {
+	background: #777;
+}
+
+.myicon {
+  position: relative;
+  padding-top: 0.5em;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.myicon-mini {
+  position: relative;
+}

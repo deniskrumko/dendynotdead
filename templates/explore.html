@@ -1,0 +1,71 @@
+{% extends "base.html" %} {% load i18n %} {% load static %}
+
+{% block content %}
+
+<div class="page-wrap">
+<!-- Main Contain -->
+<div class="ui container" id="example1" >
+
+  <!-- Main Menu -->
+  {% include 'components/menu.html' %}
+
+  <!-- Right Rail Menu -->
+  {% include 'components/right_rail.html' %}
+
+  <!-- Text at the top of the page -->
+  {% include 'texts/explore_main.html' %}
+
+  <!--Main Form -->
+  {% if not dnd_tracks and not dk_tracks %}
+    <div class="centered-content">
+      <h1 class="no-news">{% trans "Sorry, currently there are no tracks..." %}</h1>
+      <h3 class="no-news">{% trans "But look, I've got some funny fat cats for u:" %}</h3>
+      <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/zeeH-Z_Y4as"
+        frameborder="0" allowfullscreen>
+      </iframe>
+      <br>
+      <br>
+      <br>
+    </div>
+  {% else %}
+  <form id="explore_form">{% csrf_token %}
+
+    {% if dnd_tracks %}
+      <!-- Dendy Not Dead - Header -->
+      <h1 class="ui dividing header">
+        Dendy Not Dead
+        <a class="anchor" id="DND_title"></a>
+      </h1>
+      {% include 'texts/explore_DND.html' %}
+      <!-- Dendy Not Dead - Tracks -->
+      {% include 'components/tracks_info.html' with tracks=dnd_tracks %}
+    {% endif %}
+
+    {% if dnd_tracks and dk_tracks %}
+      <!-- Fabulous Divider between DND and DK -->
+      <img class="ui disabled centered image"
+           src="{% static 'images/divider.png' %}">
+    {% endif %}
+
+    {% if dk_tracks %}
+      <!-- Deniska Krumko tracks -->
+      <h1 class="ui dividing header">
+        Deniska Krumko
+        <a class="anchor" id="DK_title"></a>
+      </h1>
+      {% include 'texts/explore_DK.html' %}
+      <!-- Dendy Not Dead - Tracks -->
+      {% include 'components/tracks_info.html' with tracks=dk_tracks %}
+    {% endif %}
+
+  </form>
+  <a href="#0" class="cd-top">Top</a>
+  {% endif %}
+</div>
+
+<!-- Footer -->
+<br>
+</div>
+{% include 'components/footer.html' %}
+{% endblock %}

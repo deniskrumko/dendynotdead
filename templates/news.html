@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% load i18n %} {% load static %}
+
+{% block content %}
+
+<!-- Main Contain -->
+<div class="page-wrap">
+
+<div class="ui container" id="example1" >
+
+  <!-- Main Menu -->
+  {% include 'components/menu.html' %}
+
+  <!-- Text at the top of the page -->
+  {% include 'texts/news_main.html' %}
+  <br><br>
+</div>
+
+<form id="news_form">{% csrf_token %}
+{% if not news %}
+<h1 class="no-news">{% trans "Sorry, currently there are no news..." %}</h1>
+<img class="ui centered image no-news-cat"
+     src="{% static 'images/sad.jpg' %}">
+{% else %}
+{% for n in news %}
+  <br>
+  {% get_current_language as LANGUAGE_CODE %}
+  <div class="ui container">
+    <h1 class="news-title" >
+      {% if LANGUAGE_CODE == 'ru' %}
+        {{ n.title_ru }}
+      {% elif LANGUAGE_CODE == 'en' %}
+        {{ n.title_en }}
+      {% endif %}
+    </h1>
+    <p class="news-article">
+      {% if LANGUAGE_CODE == 'ru' %}
+        {% autoescape off %} {{ n.article_ru }} {% endautoescape %}
+      {% elif LANGUAGE_CODE == 'en' %}
+        {% autoescape off %} {{ n.article_en }} {% endautoescape %}
+      {% endif %}
+    </p>
+    <div class="ui items">
+      <div class="item">
+        <div class="content">
+          <div class="extra news-extra">
+            <span class="track_link">{{ n.published }}</span>
+            <!-- Likes -->
+            <span class="right floated track_link noselect">
+              <i onClick="myFunction(this.id)"
+                 id="{{ n.id }}"
+                 class="like icon">
+                <input style="display: none;" type="submit" value="LIKE">
+              </i>
+              <label id="number{{ n.id }}" class="default-cursor">
+                {{ n.likes }}
+              </label>
+               <span class="default-cursor">
+                 likes
+               </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui divider mobile-show"></div>
+{% endfor %}
+</form>
+<div class="ui container news-pages-section">
+  <div class="pages">
+    {% if prev_page %}
+    <a class="arrows" href="/news/{{ prev_page }}/"><i class="angle left icon"></i></a>
+    {% else %}
+    <span class="arrows"><i class="angle left disabled icon"></i></span>
+    {% endif %}
+    {{ cur_page }}
+    {% if next_page %}
+    <a class="arrows" href="/news/{{ next_page }}/"><i class="angle right icon"></i></a>
+    {% else %}
+    <span class="arrows"><i class="angle right disabled icon"></i></span>
+    {% endif %}
+    </div>
+</div>
+<a href="#0" class="cd-top">Top</a>
+{% endif %}
+<!-- Footer -->
+<br>
+
+</div>
+{% include 'components/footer.html' %}
+{% endblock %}

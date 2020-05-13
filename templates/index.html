@@ -1,139 +1,31 @@
 {% extends "base.html" %}
-{% load static i18n %}
-
-{% block extrajs %}
-{{ block.super }}
-<script src="{% static 'js/index.js' %}" charset="utf-8"></script>
-{% endblock %}
-
-{% block extrastyle %}
-{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-{% endblock %}
+{% load i18n %}
+{% load static %}
 
 {% block content %}
-<div class="ui stackable grid">
-<div class="eleven wide column">
-  <div>
-    <h2>
-      <a href="/about" class="index-title">Добро пожаловать</a>
-    </h2>
 
-    {# Main index text #}
-    <div class="index-text">
-      <p><b>Dendy Not Dead</b> — это мой маленький музыкальный проект, в котором
-      я пытаюсь собрать все ритмы и мелодии, приходящие в мою голову, во что-то
-      напоминающее музыку. Получается это плохо или не совсем — судить вам.</p>
-      <p>Поскольку времени на запись нормальной музыки у меня особо нет, то
-      все треки сделаны в <b>Guitar Pro 6</b>, отсюда это искусственное звучание.
-      Зато получается материализовывать свои идеи гораздо быстрее.</p>
-      <p>Что новенького тут вышло можно посмотреть
-      в разделе <b><a href="{% url 'news:index' %}">Новости</a></b>, все треки собраны в разделе
-      <b><a href="{% url 'music:index' %}">Музыка</a></b>, а все подробности о том,
-      почему <b>Dendy</b> и почему же <b>Not Dead</b> — в разделе
-      <b><a href="{% url 'about:index' %}">О проекте</a></b>. </p>
-    </div>
-
-    {# Author photo #}
-    <div class="index-author">
-      <img class="ui avatar image" src="{% static 'images/me.jpg' %}">
-      <a href="{{ author_page }}" target="_blank">Денис Крумко</a>
-    </div>
-  </div>
-
-  <br><br>
-
-  {# MUSIC #}
-  {# ====================================================================== #}
-  <div>
-    <h2>
-      <a href="/music" class="index-title">Музыка</a>
-    </h2>
-
-    {% if not tracks %}
-      <p style="font-size: 16px;">Пока на сайт не загружено ни одного трека</p>
-    {% else %}
-    <div class="ui grid mobile-hidden" style="margin: 0px;">
-      <div class="six column row">
-        {% for track in tracks %}
-          <div class="column track" style="padding: 5px;" data-name="{{ track.name }}">
-            <a href="{% url 'music:index'%}#{{ track.slug}}">
-            {% if track.image_thumbnail %}
-            <img class="ui image corners" src="{{ track.image_thumbnail.url }}">
-            {% else %}
-            <img class="ui image corners" src="{% static 'images/no-image.png' %}" alt="">
-            {% endif %}
-            </a>
-          </div>
-        {% endfor %}
-      </div>
-      <a id="index-track-name" href="{% url 'music:index' %}">
-        Показать все треки
-      </a>
-    </div>
-    <div class="mobile-show">
-      {% for track in tracks %}
-        <div class="column track" style="padding: 5px;">
-          <a href="{% url 'music:index'%}#{{ track.slug}}">
-            {% if track.image_thumbnail %}
-            <img class="ui image avatar" src="{{ track.image_thumbnail.url }}">
-            {% else %}
-            <img class="ui image avatar" src="{% static 'images/no-image.png' %}" alt="">
-            {% endif %}
-          {{ track.name }}
-        </a>
-        </div>
-      {% endfor %}
-      <br>
-      <a href="{% url 'music:index'%}" class="ui button primary basic wide">Показать все треки</a>
-    </div>
-    {% endif %}
-    <br>
-  </div>
+<div class="fullscreen-bg">
+		<video loop="" muted="" autoplay="" poster="http://dev2.slicejack.com/fullscreen-video-demo/img/videoframe.jpg" class="fullscreen-bg__video">
+				<source src="http://dev2.slicejack.com/fullscreen-video-demo/video/big_buck_bunny.mp4" type="video/mp4">
+				<source src="http://dev2.slicejack.com/fullscreen-video-demo/video/big_buck_bunny.ogv" type="video/ogg">
+				<source src="http://dev2.slicejack.com/fullscreen-video-demo/video/big_buck_bunny.webm" type="video/webm">
+		</video>
 </div>
 
-{# NEWS #}
-{# ====================================================================== #}
-
-<div class="five wide column">
-  <div class="">
-    <h2><a href="/news" class="index-title">Новости</a></h2>
-    <div class="ui divided unstackable items">
-      {% for n in news %}
-      <div class="item index-news">
-        <div class="ui mini image scale-image">
-          <a href="/news/{{ n.slug }}">
-            {% if n.image_thumbnail %}
-            <img src="{{ n.image_thumbnail.url }}">
-            {% else %}
-            <img src="{% static 'images/no-image.png' %}" alt="">
-            {% endif %}
-          </a>
-        </div>
-        <div class="middle aligned content">
-          <div class="header">
-            <a href="/news/{{ n.slug }}">{{ n.title }}</a>
-          </div>
-          <div class="meta">
-            <span class="category">{{ n.when }}</span>
-          </div>
-          <div class="description">
-            {% autoescape off %}
-            {{ n.preview }}
-            {% endautoescape %}
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-
-    {# ADMIN UI BUTTON #}
-    {% if request.user.is_superuser %}
-    <a href="/admin" class="ui primary button" style="width: 100%;">Admin UI</a>
-    {% endif %}
-    <br>
-
+<div class="content index-content">
+	<h1 class="DND-logo">Dendy Not Dead</h1>
+	<a class="ui animated fade button shake" href="/news/">
+  <div class="visible content">{% trans "Enter the site" %}</div>
+  <div class="hidden content ">
+    Let's ROCK
   </div>
+
+</a>
+<br>
+<br>
+<a href="#" class="lang-link" id="change-lang">
+	Change language
+</a>
 </div>
-</div>
+
 {% endblock %}

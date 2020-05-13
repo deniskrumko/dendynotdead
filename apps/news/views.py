@@ -1,83 +1,51 @@
-from django.core.paginator import EmptyPage, Paginator
-from django.http.response import Http404
-from django.shortcuts import get_object_or_404
-
-from apps.core.views import BaseView
+from django.views.generic.base import TemplateView
+from django.core.paginator import Paginator
+from libs.views import BaseViewMixin
+from django.http import HttpResponse
+from django.conf import settings
 
 from .models import News
 
+base_css = ['fonts.css', 'shortcuts.css', 'logo.css', 'cd-top.css']
 
-class NewsView(BaseView):
-    active_menu = 'Новости'
-    news_per_page = 12
-    pagination_window = 5
-    template_name = 'news/list.html'
-    title = 'Dendy Not Dead - Новости'
+
+class NewsView(BaseViewMixin, TemplateView):
+    """View for ``News`` page."""
+    menu_section = 'news'
+    template_name = 'news.html'
+    title = 'DND — News'
+    import_js = ['base.js', 'news.js']
+    import_css = base_css + ['body.css', 'menu.css', 'news.css']
+
+    def _get_paginated_news(self, context, page_id):
+        """Method to add pages info to context."""
+        all_news = News.objects.all().order_by('id').reverse()
+        p = Paginator(all_news, settings.NEWS_PER_PAGE)
+        cur_page = p.page(page_id)
+        if cur_page.has_next():
+            context['next_page'] = cur_page.next_page_number()
+        if cur_page.has_previous():
+            context['prev_page'] = cur_page.previous_page_number()
+        context['news'] = cur_page.object_list
+        context['cur_page'] = str(cur_page)[1:-1]
+        return context
 
     def get(self, request, *args, **kwargs):
         """Display ``News`` items with pagination."""
-        page = self.get_query_param(request, 'page', default=1)
-        context_data = self.get_context_data(page=page)
-        return self.render_to_response(context_data)
+        get_request = super().get(request, args, kwargs)
+        context = get_request.context_data
 
-    def get_context_data(self, page):
-        """Method to add pages info to context."""
-        context_data = super().get_context_data(page=page)
+        page_id = kwargs.get('page_id')
+        context = self._get_paginated_news(context, page_id)
+        return get_request
 
-        if not News.objects.exists():
-            return context_data
+    def post(self, request, *args, **kwargs):
+        """Increase amount of likes for specific news."""
+        like = request.POST.get('like')
+        if like:
+            news_item = News.objects.get(id=int(like))
+            news_item.inc_like()
+            news_item.save()
+            return HttpResponse('')
 
-        p = Paginator(News.objects.all(), self.news_per_page)
-        try:
-            current_page = p.page(page)
-        except EmptyPage:
-            raise Http404('Page not found')
-
-        center_index = self.pagination_window // 2
-
-        if p.num_pages < self.pagination_window:
-            context_data['pages'] = range(1, p.num_pages+1)
-        elif current_page.number <= center_index + 1:
-            context_data['pages'] = range(1, self.pagination_window + 1)
-        elif current_page.number >= p.num_pages - center_index:
-            context_data['pages'] = range(
-                p.num_pages - self.pagination_window + 1, p.num_pages + 1
-            )
-        else:
-            start = current_page.number - center_index
-            context_data['pages'] = range(
-                start, self.pagination_window + start
-            )
-
-        context_data['news'] = current_page.object_list
-        context_data['cur_page'] = current_page.number
-
-        if current_page.has_next():
-            context_data['next_page'] = current_page.next_page_number()
-
-        if current_page.has_previous():
-            context_data['prev_page'] = current_page.previous_page_number()
-
-        return context_data
-
-
-class SingleNewsView(BaseView):
-    active_menu = 'Новости'
-    template_name = 'news/single.html'
-
-    def get(self, request, **kwargs):
-        page_slug = kwargs.get('page_slug')
-
-        news = get_object_or_404(News, slug=page_slug)
-        news.increment_view()
-
-        context_data = self.get_context_data(news=news)
-        return self.render_to_response(context_data)
-
-    def get_context_data(self, news):
-        context_data = super().get_context_data(news=news)
-        context_data['news'] = news
-        return context_data
-
-    def get_title(self, **kwargs):
-        return f'DND - {kwargs["news"].title}'
+        return super().post(request, args, kwargs)

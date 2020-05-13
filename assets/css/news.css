@@ -1,0 +1,67 @@
+.news-title {
+  font-size: 3em;
+  font-family: Merriweather !important;
+  font-weight: 400 !important;
+}
+
+.news-extra {
+  padding-bottom: 1.5em !important;
+}
+
+.news-pages-section {
+  background-color: transparent !important;
+  box-shadow: 0 0 0px rgba(0,0,0,0);
+  padding-top: 2em;
+  padding-bottom: 2em;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 40em !important;
+}
+
+.pages {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3em;
+}
+
+.arrows {
+  font-size: 2em !important;
+  color: grey;
+}
+/* For phone*/
+@media screen and (max-width: 768px){
+    .news-title { padding-top: 0.5em; }
+    .news-title { font-size: 2em; }
+}
+
+/* For computer*/
+@media screen and (min-width: 768px){
+    .news-title { padding-top: 0.5em; }
+    .news-article { font-size: 1.3em; }
+}
+
+/* Like Button */
+.like {
+  -webkit-transition: all 0.2s ease !important;
+  -moz-transition: all 0.2s ease !important;
+  transition: all 0.2s ease !important;
+}
+.like:active {
+  transform: scale(1.5);
+}
+
+/* Track Links */
+.track_link {
+  color: #7A7A7A !important;
+  -webkit-transition: all 0.2s ease !important;
+  -moz-transition: all 0.2s ease !important;
+  transition: all 0.2s ease !important;
+}
+
+.no-news {
+  text-align: center;
+}
+
+.no-news-cat {
+  max-width: 30em !important;
+}

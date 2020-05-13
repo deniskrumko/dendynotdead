@@ -1,0 +1,11 @@
+.ui.right.rail {
+  margin: auto !important;
+}
+
+@media screen and (max-width: 1290px){
+    .rail-hidden { display: none !important; }
+}
+
+.sticky {
+  margin-top: 6em !important;
+}

@@ -1,0 +1,58 @@
+
+/* Group of `track-name-large` and `track-background`*/
+.track-title {
+  float: left;
+  position: absolute !important;
+  text-align: left;
+  color: white;
+}
+
+.track-name-large {
+  font-family: Merriweather !important;
+  font-weight: 300 !important;
+}
+
+.track-background {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 65em !important;
+  background-size: cover !important;
+  background-position: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  width: auto;
+}
+
+/* Mobile phone */
+@media screen and (max-width: 600px){
+    .track-background { height: 190px; }
+    .transparent-menu { height: 190px; }
+    .track-name-large { font-size: 1.6em !important; }
+    .track-title { bottom: 1em; }
+}
+
+/* Tablet */
+@media screen and (min-width: 601px) and (max-width: 910px){
+    .track-background { height: 250px; }
+    .transparent-menu { height: 250px; }
+    .track-name-large { font-size: 3em !important; }
+    .track-title { bottom: 1.5em; }
+}
+
+/* Computer */
+@media screen and (min-width: 911px){
+    .track-background { height: 400px; }
+    .transparent-menu { height: 400px; }
+    .track-name-large { font-size: 5em !important; }
+    .track-title { bottom: 2em; }
+}
+
+.single-navigation {
+  background-color: transparent !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}

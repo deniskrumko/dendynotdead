@@ -1,0 +1,85 @@
+{% load static %}
+
+<div class="ui items" >
+  {% for track in tracks %}
+
+  <div class="item track-item" id="track_{{ track.id }}">
+    <!-- Track Round Image -->
+    <div class="ui small circular image explore-round">
+        <img src="{% static 'images/image.png' %}">
+    </div>
+
+    <!-- Track Content -->
+    <div class="content track-content">
+
+      <!-- Track Name (not mobile) -->
+      <a href="{{ track.id }}" class="track-name track-name-base header mobile-hidden">
+        {{ track.track_name }}
+      </a>
+      <!-- Track Name (mobile) -->
+      <a href="{{ track.id }}" class="track-name header mobile-show">
+        {{ track.track_name }}
+      </a>
+      <!-- New song label -->
+      {% if track.brand_new_track %}
+      <span class="ui red label mobile-hidden new-song-label default-cursor">
+        <i class="star icon"></i>
+        New track!
+      </span>
+      {% endif %}
+      <!-- Track Artist -->
+      <div class="meta">
+          <span>{{ track.artist }}</span>
+      </div>
+      <!-- Track Audio File -->
+      <div class="description">
+        <audio controls preload="metadata">
+          {% for a in track.audiofile_set.all %}
+          <source src="{{ a.audio_file_url }}"
+                  type="{{ a.audio_mimetype }}">
+          {% endfor %}
+          <p> Your browser does not support the audio element. </p>
+        </audio>
+      </div>
+      <!-- Track Links -->
+      <div class="extra">
+        <!-- Published -->
+        {% if track.published %}
+          <span class="track_link default-cursor">
+            <i class="calendar icon"></i>{{ track.published }}
+          </span>
+        {% endif %}
+        <!-- Guitar Pro File -->
+        {% if track.gtp_file %}
+        <a href="{{ track.gtp_file.url }}" class="gtp_link track_link mobile-hidden-link">
+          <i class="user icon"></i> GTP File
+        </a>
+        {% endif %}
+        <!-- YouTube -->
+        {% if track.youtube_link %}
+        <a href="{{ track.youtube_link }}" class="youtube_link track_link mobile-hidden-link">
+          <i class="youtube play icon"></i> YouTube
+        </a>
+        {% endif %}
+        <!-- Likes -->
+        <span class="right floated track_link noselect">
+          <i onClick="myFunction(this.id)"
+             id="{{ track.id }}"
+             class="like icon">
+            <input style="display: none;" type="submit" value="LIKE">
+          </i>
+          <label id="number{{ track.id }}" class="default-cursor">
+            {{ track.likes }}
+          </label>
+           <span class="default-cursor">
+             likes
+           </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- Track Divider -->
+  <div class="ui divider"></div>
+
+{% endfor %}
+</div>

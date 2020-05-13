@@ -1,0 +1,63 @@
+@media screen and (max-width: 800px){
+    .explore-round { display: none !important; }
+}
+
+
+@media screen and (max-width: 400px){
+    .mobile-hidden-link { display: none !important; }
+}
+
+audio {
+  width: 100% !important;
+}
+
+.ui.items>.item>.image>img {
+  border-radius: 100em !important;
+}
+.track-content {
+  padding-top: 0em !important;
+}
+
+/* New Song Label - Pill */
+.new-song-label {
+  margin-top: -0.4em !important;
+  float: right;
+}
+
+/* Track Name */
+.track-name {
+  font-family: Merriweather !important;
+  font-size: 1.7em !important;
+  font-weight: 400 !important;
+  line-height: 1.4;
+  padding-bottom: 0.3em;
+}
+.track-name-base {
+  padding-top: 1em;
+}
+
+/* Like Button */
+.like {
+  -webkit-transition: all 0.2s ease !important;
+  -moz-transition: all 0.2s ease !important;
+  transition: all 0.2s ease !important;
+}
+.like:active {
+  transform: scale(1.5);
+}
+
+/* Track Links */
+.track_link {
+  color: #7A7A7A !important;
+  -webkit-transition: all 0.2s ease !important;
+  -moz-transition: all 0.2s ease !important;
+  transition: all 0.2s ease !important;
+}
+
+.gtp_link:hover {
+  color: #4285F4 !important;
+}
+
+.youtube_link:hover {
+  color: #CC181E !important;
+}

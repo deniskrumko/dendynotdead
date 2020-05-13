@@ -1,0 +1,33 @@
+.default-cursor {
+  cursor: default;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+@media screen and (max-width: 660px){
+    .mobile-hidden { display: none !important; }
+}
+
+@media screen and (min-width: 660px){
+    .mobile-show { display: none !important; }
+}
+
+.noborder {
+  border-color: transparent !important;
+}
+
+.centered-content {
+  text-align: center;
+}
+
+.red {
+  color: red;
+}

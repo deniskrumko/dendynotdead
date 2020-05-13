@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% load i18n %} {% load static %}
+
+{% comment %}
+
+This template is used for page with information for single track.
+
+{% endcomment %}
+
+{% block content %}
+
+<div class="page-wrap">
+<!-- Main Contain -->
+
+  <!-- Main Menu -->
+  <div class="track-background"></div>
+
+<div class="ui transparent-menu">
+  {% include 'components/menu.html' with inverted=True %}
+  <div class="track-title">
+    <h1 class="track-name-large">{{ track.track_name }}</h1>
+    {{ track.artist }}
+  </div>
+</div>
+<div class="ui container">
+  <br>
+  <h3>Description</h3>
+    {{ track.description }}
+
+  <h3>Audio files</h3>
+
+    {% for audio_file in track.audiofile_set.all %}
+    <h4>{{ audio_file.version}}</h4>
+    <audio controls preload="metadata">
+      <source src="{{ audio_file.file_mp3 }}" type="audio/mpeg">
+      <source src="{{ audio_file.file_ogg }}" type="audio/ogg">
+      <source src="{{ audio_file.file_wav }}" type="audio/wav">
+      <p> {% trans "Your browser does not support the audio element." %} </p>
+    </audio>
+    {% endfor %}
+<br>
+<br>
+</div>
+<div class="ui container single-navigation">
+  <div class="ui two attached buttons ">
+
+    {% if prev_song %}
+    <a class="ui vertical animated button" href="/explore/{{ prev_song_id }}/">
+      <div class="hidden content">{{ prev_song }}</div>
+      <div class="visible content">
+        {% trans "Previous song" %}
+      </div>
+    </a>
+    {% endif %}
+
+    {% if next_song %}
+    <a class="ui vertical animated button" href="/explore/{{ next_song_id }}/">
+      <div class="hidden content">{{ next_song }}</div>
+      <div class="visible content">
+        {% trans "Next song" %}
+      </div>
+    </a>
+    {% endif %}
+
+  </div>
+</div>
+
+<!-- Footer -->
+<br>
+</div>
+{% include 'components/footer.html' %}
+{% endblock %}
+
+{% block extra_css %}
+  .track-background {
+    background-image: url("{% static 'images/wallpaper.jpg' %}") !important;
+  }
+{% endblock %}

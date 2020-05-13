@@ -1,0 +1,76 @@
+body {
+  background-color: #edeeec !important;
+}
+
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -205px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 205px;
+}
+
+
+.ui.container {
+  max-width: 65em !important;
+  width: auto;
+}
+.container {
+  position: relative;
+
+  left: 0px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background-color: white !important;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.ui.container.transparent {
+  background-color: transparent !important;
+  box-shadow: 0 0 0px rgba(0,0,0,0);
+}
+.ui.container.absolute {
+  background-color: transparent !important;
+  box-shadow: 0 0 0px rgba(0,0,0,0);
+  position: absolute;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+}
+/* Then it is mobile*/
+@media screen and (max-width: 660px){
+  body {
+    background-color: white !important;
+  }
+  .container {
+    background-color: white !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    box-shadow: 0 0 0px rgba(0,0,0,0);
+  }
+}
+
+.credentials-center {
+  text-align: center;
+  color: grey;
+}
+
+.white-link{
+  color: #BBB !important;
+}
+
+.white-link:hover{
+  color: white !important;
+}

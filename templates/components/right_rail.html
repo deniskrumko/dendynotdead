@@ -1,0 +1,35 @@
+<div class="right ui rail rail-hidden">
+  <div class="ui sticky fixed top">
+    <h4 class="ui header">
+      Explore tracks
+    </h4>
+    <div class="ui vertical fluid accordion text menu">
+      <div class="item">
+        <a class="title">
+          <i class="dropdown icon"></i>
+          <b>Dendy Not Dead</b>
+        </a>
+        <div class="content menu">
+          {% for track in dnd_tracks %}
+          <a class="item" href="#track_{{ track.id }}">
+            {{ track.track_name }}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="item">
+        <a class="title">
+          <i class="dropdown icon"></i>
+          <b>Deniska Krumko</b>
+        </a>
+        <div class="content menu">
+          {% for track in dk_tracks %}
+          <a class="item" href="#track_{{ track.id }}">
+            {{ track.track_name }}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

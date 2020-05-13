@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% load i18n %} {% load static %}
+
+{% block content %}
+
+<!-- Main Contain -->
+<div class="ui container transparent" id="example1" >
+
+  <!-- Main Menu -->
+  {% include 'components/menu.html'%}
+
+  {% if not messages %}
+  <div class="centered-content">
+    <h1>
+      {% trans "Hey, you will be the first person to write message on this wall! <br> Awesome!" %}
+    </h1>
+    <h3>{% trans "Just write your message in this form:" %}</h3>
+    <br>
+  </div>
+  {% endif %}
+  <!-- Send wall-message form -->
+  <form class="ui form wall-form" method="post">{% csrf_token %}
+    <div class="ui fluid action input">
+      <input type="text" name="message" placeholder="Leave any message you want" maxlength="128">
+      <button class="ui button" type="submit">Submit</button>
+    </div>
+
+    <!-- Wall messages -->
+    <div class="scroll-content" id="scroll-content">
+      {% for msg in messages %}
+        <h1 class="wall-msg">{{ msg.message }}</h1>
+        <div class="wall-date">{{ msg.published }}
+          {% if session_id == msg.session_id %}
+            <button class="delete-button circular ui icon button" type="submit" name="delete_msg" value="{{ msg.id }}">
+              <i class="remove icon"></i>
+            </button>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </form>
+
+  <!-- Back to top -->
+  <a href="#0" class="cd-top">Top</a>
+
+</div>
+
+{% endblock %}

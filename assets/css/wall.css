@@ -1,0 +1,36 @@
+body {
+  background-size: cover !important;
+  background-position: center !important;
+  background-image: url("../images/wall.jpg") !important;
+  background-attachment: fixed;
+}
+
+.wall-form {
+  position: relative !important;
+	width: 100% !important;
+}
+
+.scroll-content {
+    padding-top: 2em;
+    width: 100%;
+}
+
+.wall-date {
+  color: #555;
+}
+
+.wall-msg {
+  font-family: Lemon;
+  font-size: 3em;
+}
+
+.delete-button {
+  font-size: 0.7em !important;
+  margin-left: 0.9em !important;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2) !important;
+}
+
+.delete-button:hover {
+  background-color: #dd4b39 !important;
+  color: white !important;
+}

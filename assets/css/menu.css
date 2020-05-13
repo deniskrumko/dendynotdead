@@ -1,0 +1,49 @@
+.ui.secondary.pointing.menu .item {
+  font-size: 1.3em;
+}
+
+.mymenu {
+  background-color: transparent !important;
+  padding-top: 1em;
+}
+
+.menu-noborder {
+  border-width: 0em !important;
+}
+@media screen and (max-width: 600px){
+    .mobile-hidden-menu { display: none !important; }
+    .mymenu {padding-top: 0em;}
+}
+
+@media screen and (min-width: 601px){
+    .mobile-show-menu { display: none !important; }
+}
+
+.mydropdown {
+  width: 10px !important;
+}
+
+.transparent-menu {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent !important;
+  max-width: 65em;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* Then it is mobile*/
+@media screen and (max-width: 768px){
+  .transparent-menu {
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+  }
+}
+
+.menu-item {
+  color: #333;
+}
