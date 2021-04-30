@@ -2,15 +2,18 @@
 
 Website for **Dendy Not Dead** music project.
 
+**☠️ THIS PROJECT IS NO LONGER SUPPORTED ☠️**
+
 https://dendynotdead.herokuapp.com/
 
 ![Preview](static/images/readme.jpg)
 
 ## Status
 
-Project is **archived** as it will be replaced with [this project](https://github.com/deniskrumko/deniskrumko)
+This project is replaced with [my own website](https://github.com/deniskrumko/deniskrumko),
+where I store video and music.
 
-## Stack
+## About project
 
 * **Django 1.11** - Backend
 * **Django Templates** + **Semantic UI** - Frontend
